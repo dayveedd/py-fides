@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pyFides — AP2 Fiduciary Settlement Protocol for Autonomous Agent Commerce</title>
+  <meta name="description" content="The fiduciary settlement protocol for the autonomous machine economy. Built on Google AP2 Protocol, PayPal Orders v2 rails, and PYUSD stablecoins.">
+
+  <!-- Premium Typography: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- AG Grid Enterprise CDN (v32.2.0) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.2.0/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.2.0/styles/ag-theme-quartz.css">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@32.2.0/dist/ag-grid-enterprise.min.js"></script>
+
+  <!-- AG Charts Community CDN (v10.2.0) -->
+  <script src="https://cdn.jsdelivr.net/npm/ag-charts-community@10.2.0/dist/umd/ag-charts-community.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="saas-body">
+
+  <!-- ======================================================================
+       VIEW A: THE HIGH-GRADE SAAS / AI / FINTECH LANDING PAGE
+       The floating pill nav bar is placed INSIDE this view so that when
+       entering the Console View, this nav bar is hidden cleanly.
+       ====================================================================== -->
+  <main id="landingPage" class="landing-view active">
+
+    <!-- FLOATING PILL NAVIGATION BAR (INSPIRATION: DEFLEXAI / INSPO.WEBP) -->
+    <header class="floating-nav-wrapper">
+      <nav class="pill-nav">
+        <div class="nav-brand">
+          <a href="#hero" class="brand-link" id="navLogo">
+            <div class="brand-glyph">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="brand-text">pyFides</span>
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a href="#protocol" class="nav-item">Protocol</a>
+          
+          <!-- Solutions Dropdown Menu (Functional & Responsive) -->
+          <div class="nav-dropdown" id="solutionsDropdown">
+            <button type="button" class="nav-item nav-dropdown-btn" id="btnSolutionsToggle">
+              <span>Solutions</span>
+              <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </button>
+            <div class="dropdown-menu-popover" id="solutionsMenu">
+              <a href="#human-machine" class="dropdown-menu-item">
+                <div class="dropdown-item-icon">
+                  <i data-lucide="cpu"></i>
+                </div>
+                <div class="dropdown-item-text">
+                  <span class="dropdown-item-title">GPU Compute Burst</span>
+                  <span class="dropdown-item-desc">High-performance AI inference allocation with SLA guarantees</span>
+                </div>
+              </a>
+              <a href="#protocol" class="dropdown-menu-item">
+                <div class="dropdown-item-icon">
+                  <i data-lucide="database"></i>
+                </div>
+                <div class="dropdown-item-text">
+                  <span class="dropdown-item-title">Financial Intelligence</span>
+                  <span class="dropdown-item-desc">Verified SEC 10-K &amp; Bloomberg sentiment vector extraction</span>
+                </div>
+              </a>
+              <a href="#security" class="dropdown-menu-item">
+                <div class="dropdown-item-icon">
+                  <i data-lucide="shield-alert"></i>
+                </div>
+                <div class="dropdown-item-text">
+                  <span class="dropdown-item-title">Cryptographic Oracle Defense</span>
+                  <span class="dropdown-item-desc">SHA-256 deliverable proof verification before PayPal capture</span>
+                </div>
+              </a>
+              <a href="#specs" class="dropdown-menu-item">
+                <div class="dropdown-item-icon">
+                  <i data-lucide="shield-check"></i>
+                </div>
+                <div class="dropdown-item-text">
+                  <span class="dropdown-item-title">Two-Phase PayPal Escrow</span>
+                  <span class="dropdown-item-desc">Zero-trust author-to-capture release on deliverable SHA-256 match</span>
+                </div>
+              </a>
+              <div class="dropdown-menu-footer">
+                <button type="button" class="dropdown-console-cta" id="btnDropdownConsole">
+                  <span>Launch Operational Console</span>
+                  <i data-lucide="arrow-up-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <a href="#human-machine" class="nav-item">Architecture</a>
+          <a href="#security" class="nav-item">Security</a>
+          <a href="#specs" class="nav-item">AP2 Standard</a>
+        </div>
+
+        <div class="nav-cta-group">
+          <button class="btn-nav-ghost" id="btnNavSignIn">Sign In</button>
+          <button class="btn-nav-primary" id="btnOpenConsole">
+            <span>Launch Console</span>
+            <i data-lucide="arrow-up-right"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 1. HERO SECTION WITH CLEAR ANIMATED CONCENTRIC ORBITAL RINGS -->
+    <section class="hero-orbit-section" id="hero">
+      
+      <!-- Clear Animated Concentric Orbital SVG Canvas (Glitch-Free Stroke-Dashoffset Flow) -->
+      <div class="orbit-canvas" aria-hidden="true">
+        <svg class="orbit-svg" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ring 1 (Inner Animated Orbit) -->
+          <circle class="orbit-ring ring-1" cx="700" cy="450" r="280" />
+          
+          <!-- Ring 2 (Middle Animated Dashed Orbit) -->
+          <circle class="orbit-ring ring-2" cx="700" cy="450" r="430" />
+          
+          <!-- Ring 3 (Outer Animated Orbit) -->
+          <circle class="orbit-ring ring-3" cx="700" cy="450" r="580" />
+
+          <!-- Ring 4 (Far Perimeter Orbit) -->
+          <circle class="orbit-ring ring-4" cx="700" cy="450" r="700" />
+        </svg>
+
+        <!-- Floating Ecosystem Integration Node Badges (Stationed strictly in outer clear zones) -->
+        <div class="orbit-node node-paypal" title="PayPal Orders v2 Rails">
+          <div class="node-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#0070BA">
+              <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.78.78 0 0 1 .77-.655h6.66c3.277 0 5.688 1.545 5.253 4.887-.414 3.175-2.613 4.87-5.592 4.87h-2.14l-1.04 6.55-.178.965h-.001a1.002 1.002 0 0 1-.99.8h-.001l-.001-.001z"/>
+            </svg>
+          </div>
+          <span class="node-label">PayPal Orders v2</span>
+        </div>
+
+        <div class="orbit-node node-google" title="Google Agent Payments Protocol (AP2)">
+          <div class="node-icon">
+            <i data-lucide="shield-check" style="width: 15px; height: 15px; color: #0070BA;"></i>
+          </div>
+          <span class="node-label">Google AP2</span>
+        </div>
+
+        <div class="orbit-node node-pyusd" title="PayPal USD Stablecoin Rail">
+          <div class="node-icon">
+            <span class="pyusd-symbol">₮</span>
+          </div>
+          <span class="node-label">PYUSD Settlement</span>
+        </div>
+
+        <div class="orbit-node node-apimatic" title="APIMatic Dynamic OpenAPI Discovery">
+          <div class="node-icon">
+            <i data-lucide="layers" style="width: 15px; height: 15px; color: #0070BA;"></i>
+          </div>
+          <span class="node-label">APIMatic MCP</span>
+        </div>
+
+        <div class="orbit-node node-oracle" title="Cryptographic Oracle SHA-256 Digest Match">
+          <div class="node-icon">
+            <i data-lucide="binary" style="width: 15px; height: 15px; color: #0070BA;"></i>
+          </div>
+          <span class="node-label">Ed25519 Oracle</span>
+        </div>
+
+        <div class="orbit-node node-agstudio" title="AG Studio / AG Grid Fiduciary Ledger">
+          <div class="node-icon">
+            <i data-lucide="table-2" style="width: 15px; height: 15px; color: #0070BA;"></i>
+          </div>
+          <span class="node-label">AG Studio Ledger</span>
+        </div>
+      </div>
+
+      <!-- Hero Main Content (High z-index, perfectly centered and clear of badges) -->
+      <div class="hero-content-wrapper">
+        
+        <!-- Social Proof Trust Badge (Monochrome & Cobalt Theme) -->
+        <div class="hero-trust-badge">
+          <span class="trust-stars">★★★★★</span>
+          <span class="trust-text">Google AP2 Protocol &middot; PayPal Orders v2 &middot; PYUSD Rails</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-title">
+          The Fiduciary Settlement Protocol for the <span class="title-em">Autonomous Machine Economy.</span>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="hero-subhead">
+          As autonomous AI agents procure compute cycles, financial datasets, and micro-APIs directly from other machines, 
+          <strong>pyFides</strong> provides zero-trust conditional escrow on PayPal rails—securing human spend with Ed25519 Intent Mandates and unlocking capital only upon SHA-256 deliverable proofs.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-button-row">
+          <button class="btn-hero-primary" id="btnHeroLaunchConsole">
+            <span>Launch Fiduciary Console</span>
+            <i data-lucide="arrow-up-right"></i>
+          </button>
+          <a href="#human-machine" class="btn-hero-secondary">
+            <span>Explore Architecture</span>
+            <i data-lucide="arrow-down"></i>
+          </a>
+        </div>
+
+        <!-- Stacked Floating Activity Glass Cards (Unified Premium Theme) -->
+        <div class="hero-stacked-cards-container">
+          <div class="ambient-glow"></div>
+
+          <div class="stacked-card card-top">
+            <div class="card-avatar">
+              <i data-lucide="user-check"></i>
+            </div>
+            <div class="card-info">
+              <div class="card-title-row">
+                <span class="card-actor">David (Human Principal)</span>
+                <span class="card-action">signed Ed25519 Intent Mandate</span>
+              </div>
+              <div class="card-detail">
+                <span class="badge-micro">$30.00 USD Spend Cap</span>
+                <span class="card-time">Just now &middot; Deterministic Limit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stacked-card card-middle">
+            <div class="card-avatar">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="card-info">
+              <div class="card-title-row">
+                <span class="card-actor">Buyer Agent Alpha</span>
+                <span class="card-action">locked funds in PayPal Sandbox Orders v2</span>
+              </div>
+              <div class="card-detail">
+                <span class="badge-micro">intent: AUTHORIZE &middot; $28.00</span>
+                <span class="card-time">2 min ago &middot; Partner Attribution ID verified</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stacked-card card-bottom">
+            <div class="card-avatar">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <div class="card-info">
+              <div class="card-title-row">
+                <span class="card-actor">Fiduciary Cryptographic Oracle</span>
+                <span class="card-action">verified Deliverable SHA-256 Digest Match</span>
+              </div>
+              <div class="card-detail">
+                <span class="badge-micro">Capture Order Released &middot; 84ms Latency</span>
+                <span class="card-time">5 min ago &middot; 100% Mathematical Proof</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Trust Logo Strip (Strictly Actual Technologies Used) -->
+      <div class="hero-logos-strip">
+        <p class="logos-caption">CORE ARCHITECTURAL FOUNDATION</p>
+        <div class="logos-row">
+          <span class="logo-item">PayPal Orders v2</span>
+          <span class="logo-dot">&middot;</span>
+          <span class="logo-item">Google AP2 Protocol</span>
+          <span class="logo-dot">&middot;</span>
+          <span class="logo-item">PayPal USD (PYUSD)</span>
+          <span class="logo-dot">&middot;</span>
+          <span class="logo-item">APIMatic Context Engine</span>
+          <span class="logo-dot">&middot;</span>
+          <span class="logo-item">AG Grid Enterprise</span>
+          <span class="logo-dot">&middot;</span>
+          <span class="logo-item">RFC 8785 Canonical JSON</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================
+         2. HUMAN & ROBOTIC HAND SHOWCASE SECTION ("_.JPEG" INTEGRATION)
+         "Where Human Intent Meets Autonomous Machine Speed"
+         ====================================================================== -->
+    <section class="section-showcase" id="human-machine">
+      <div class="showcase-header">
+        <span class="section-pill">BOUNDED DELEGATED AGENCY</span>
+        <h2 class="section-heading">Where Human Intent Meets Autonomous Machine Speed.</h2>
+        <p class="section-lead">
+          AI agents need autonomy to negotiate microservices in milliseconds, but must never hold unconditional wallet keys. 
+          pyFides enforces Google's AP2 protocol: humans set cryptographically enforced spending boundaries; agents execute zero-trust escrow on PayPal rails.
+        </p>
+      </div>
+
+      <div class="human-robot-visual-card">
+        <div class="visual-image-wrapper">
+          <img src="/assets/human-robot-hand.jpg" alt="Human Principal delegating fiduciary intent to autonomous robotic agent" class="hero-hand-image">
+          <div class="image-radial-overlay"></div>
+          
+          <!-- Floating Interactive Glass Callouts (Unified Monochrome Theme) -->
+          <div class="floating-badge badge-human">
+            <div class="badge-header">
+              <span class="status-indicator-dot dot-primary"></span>
+              <span class="badge-heading">Human Principal (David)</span>
+            </div>
+            <p class="badge-text">Ed25519 Intent Mandate ($30 Cap)</p>
+            <span class="badge-subtext">Cryptographic Spend Delegation</span>
+          </div>
+
+          <div class="floating-badge badge-bridge">
+            <i data-lucide="lock" class="bridge-icon"></i>
+            <span class="bridge-text">pyFides Zero-Trust Escrow Bridge</span>
+          </div>
+
+          <div class="floating-badge badge-robot">
+            <div class="badge-header">
+              <span class="status-indicator-dot dot-primary"></span>
+              <span class="badge-heading">Autonomous Agent Alpha</span>
+            </div>
+            <p class="badge-text">PayPal Orders v2 Two-Phase Escrow</p>
+            <span class="badge-subtext">RFC 8785 Cart Mandate Negotiation</span>
+          </div>
+        </div>
+
+        <!-- 3 Feature Pillars beneath the image (Unified Palette) -->
+        <div class="hand-features-grid">
+          <div class="hand-feature-item">
+            <div class="feature-icon-box">
+              <i data-lucide="key-round"></i>
+            </div>
+            <h3 class="feature-title">Cryptographic Spend Bounds</h3>
+            <p class="feature-desc">
+              Human principals sign Ed25519 Intent Mandates setting strict budget caps ($30.00 USD), permitted endpoints, and validity windows. Even under adversarial injection, an agent cannot exceed these mathematical limits.
+            </p>
+          </div>
+
+          <div class="hand-feature-item">
+            <div class="feature-icon-box">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3 class="feature-title">Two-Phase PayPal Escrow</h3>
+            <p class="feature-desc">
+              Funds are conditionally locked via PayPal Orders v2 <code>intent: AUTHORIZE</code>. The seller agent receives guaranteed payment certainty, but funds are only captured when deliverable SHA-256 proofs are verified.
+            </p>
+          </div>
+
+          <div class="hand-feature-item">
+            <div class="feature-icon-box">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3 class="feature-title">Sub-100ms PYUSD Settlement</h3>
+            <p class="feature-desc">
+              For high-frequency machine micro-transactions, pyFides provides instant dual-rail routing to PayPal USD (PYUSD) stablecoin rails with verifiable on-chain transaction hashes and block telemetry.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. ARCHITECTURAL BENTO GRID (FINTECH & SAAS BENCHMARK)
+         Now mapped to #protocol and #security so links scroll here directly!
+         ====================================================================== -->
+    <section class="section-bento" id="protocol">
+      <div class="bento-section-header">
+        <span class="section-pill">PROTOCOL RIGOR &amp; SECURITY</span>
+        <h2 class="section-heading">Google AP2 Protocol &amp; PayPal Escrow Rails</h2>
+        <p class="section-lead">
+          Four mathematical guarantees that protect human capital, defeat adversarial prompt injection, and automate machine-speed settlement.
+        </p>
+      </div>
+
+      <div class="bento-container">
+        
+        <!-- Bento Card 1: Intent Mandate -->
+        <div class="bento-item bento-card-large">
+          <div class="bento-badge">AP2 MANDATE SPECIFICATION</div>
+          <h3 class="bento-heading">Bounded Delegated Intent</h3>
+          <p class="bento-paragraph">
+            The foundation of Google's Agent Payments Protocol (AP2). The human principal defines a cryptographically signed contract delegating authority up to a fixed dollar cap ($30.00 USD max).
+          </p>
+          <div class="code-preview-box">
+            <div class="code-preview-header">
+              <span class="code-tab active">ap2-intent-mandate.json</span>
+              <span class="code-tag">RFC 8785 CANONICAL</span>
+            </div>
+            <pre class="code-body"><code>{
+  "ap2_version": "2026.1.0",
+  "mandate_type": "INTENT_MANDATE",
+  "principal": { "user_id": "usr_david_001", "public_key": "2e677f45..." },
+  "constraints": {
+    "max_amount": 30.00,
+    "currency": "USD",
+    "allowed_settlement_rails": ["PAYPAL_BALANCE", "PYUSD"],
+    "valid_until": "2026-11-02T12:00:00Z"
+  },
+  "signature": "520f92dc573acbc6bfa57ef1392316..."
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Bento Card 2: Two-Phase PayPal Rails -->
+        <div class="bento-item">
+          <div class="bento-icon">
+            <i data-lucide="layers"></i>
+          </div>
+          <h3 class="bento-heading">Two-Phase Escrow Lock</h3>
+          <p class="bento-paragraph">
+            Eliminates counterparty non-delivery. Step 1 locks funds on PayPal Sandbox Orders v2 (AUTHORIZE). Step 2 releases funds (CAPTURE) only after the Cryptographic Oracle confirms the SHA-256 deliverable matches.
+          </p>
+          <div class="bento-metric-pill">
+            <span class="metric-val">100%</span>
+            <span class="metric-label">Dispute Prevention Rate</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 3: OWASP Injection Shield -->
+        <div class="bento-item" id="security">
+          <div class="bento-icon">
+            <i data-lucide="shield-alert"></i>
+          </div>
+          <h3 class="bento-heading">OWASP MCP Top 10 Guard</h3>
+          <p class="bento-paragraph">
+            Adversarial prompt injection payloads embedded in seller quotes are quarantined automatically. The Intent Mandate prevents malicious instructions from draining PayPal balances.
+          </p>
+          <div class="bento-metric-pill">
+            <span class="metric-val">$0.00</span>
+            <span class="metric-label">Funds Exposed to Injections</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 4: APIMatic Dynamic Discovery -->
+        <div class="bento-item bento-card-wide">
+          <div class="bento-badge">OPENAPI 3.1 SYNTHESIS</div>
+          <h3 class="bento-heading">APIMatic Dynamic Context Engine</h3>
+          <p class="bento-paragraph">
+            Buyer Agent Alpha autonomously ingests OpenAPI 3.1 specifications from Seller endpoints, synthesizing type-safe MCP tools for negotiation, schema validation, and SLA enforcement without human engineering.
+          </p>
+          <div class="specs-pills-row">
+            <span class="spec-pill">GPU Inference Spec</span>
+            <span class="spec-pill">Financial Sentiment Spec</span>
+            <span class="spec-pill">FinTech Gateway Spec</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. STATS & PROTOCOL VELOCITY STRIP
+         ====================================================================== -->
+    <section class="section-stats-strip" id="specs">
+      <div class="stats-strip-container">
+        <div class="strip-stat-box">
+          <span class="strip-number tabular-nums">$30.00</span>
+          <span class="strip-label">Bounded Spend Cap</span>
+          <span class="strip-sub">Ed25519 Delegated Limit</span>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-stat-box">
+          <span class="strip-number tabular-nums">84ms</span>
+          <span class="strip-label">PYUSD Settlement Latency</span>
+          <span class="strip-sub">Sub-second Machine Velocity</span>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-stat-box">
+          <span class="strip-number tabular-nums">0.00%</span>
+          <span class="strip-label">Chargeback / Dispute Rate</span>
+          <span class="strip-sub">SHA-256 Mathematical Oracle</span>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-stat-box">
+          <span class="strip-number tabular-nums">2-Phase</span>
+          <span class="strip-label">PayPal Orders v2 Commit</span>
+          <span class="strip-sub">AUTHORIZE &rarr; CAPTURE Rails</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. BOTTOM CALL TO ACTION
+         ====================================================================== -->
+    <section class="section-cta">
+      <div class="cta-card">
+        <h2 class="cta-title">Ready for Autonomous Machine Commerce?</h2>
+        <p class="cta-desc">
+          Experience the live AP2 escrow fiduciary protocol on PayPal Sandbox rails. Launch the interactive console to negotiate services, test injection defenses, and audit cryptographic receipts.
+        </p>
+        <div class="cta-actions">
+          <button class="btn-hero-primary btn-cta-lg" id="btnCtaLaunchConsole">
+            <span>Launch Fiduciary Console</span>
+            <i data-lucide="arrow-up-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="saas-footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="brand-link">
+            <span class="brand-text">pyFides</span>
+            <span class="badge-footer">Google AP2 Protocol &middot; PayPal Orders v2</span>
+          </div>
+          <p class="footer-copy">&copy; 2026 pyFides Protocol. Built for the PayPal AI Hackathon.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#protocol">Protocol Spec</a>
+          <a href="#human-machine">Architecture</a>
+          <a href="#security">Security</a>
+          <button class="btn-footer-link" id="btnFooterConsole">Console</button>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ======================================================================
+       VIEW B: THE FIDUCIARY OPERATIONAL CONSOLE (ACCESSIBLE VIA "LAUNCH CONSOLE")
+       Houses two distinct separated views:
+       1. Autonomous Services Marketplace & Action-Oriented Copilot Thread
+       2. Treasury Ledger & Risk Analytics (AG Charts + AG Grid)
+       ====================================================================== -->
+  <div id="consoleView" class="console-view">
+    
+    <!-- Console Top Bar -->
+    <div class="console-top-bar">
+      <div class="console-bar-left">
+        <button class="btn-back-landing" id="btnBackToLanding">
+          <i data-lucide="arrow-left"></i>
+          <span>Back to Overview</span>
+        </button>
+        <span class="console-bar-title">pyFides Fiduciary Console</span>
+        <span class="badge-pill badge-ap2">AP2 PROTOCOL ACTIVE</span>
+      </div>
+
+      <!-- Segmented View Switcher (Apple-grade) -->
+      <div class="console-segmented-nav" role="tablist">
+        <button class="segmented-nav-btn active" id="tabBtnCommerce" data-view="commerce" role="tab" aria-selected="true">
+          <i data-lucide="cpu"></i>
+          <span>Autonomous Commerce &amp; Copilot</span>
+        </button>
+        <button class="segmented-nav-btn" id="tabBtnTreasury" data-view="treasury" role="tab" aria-selected="false">
+          <i data-lucide="line-chart"></i>
+          <span>Treasury Ledger &amp; Risk Analytics</span>
+          <span class="nav-count-badge" id="ledgerCountBadge">0</span>
+        </button>
+      </div>
+
+      <div class="console-bar-right">
+        <button class="btn-apple-secondary btn-sm" id="btnConsoleAuditReceipt">
+          <i data-lucide="file-check-2"></i>
+          <span>Audit Latest Receipt</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Console Main Content -->
+    <div class="console-inner-content">
+      
+      <!-- ====================================================================
+           TAB VIEW 1: AUTONOMOUS COMMERCE & FIDUCIARY COPILOT
+           Houses the Marketplace, Action-Oriented Copilot Thread, and PayPal Rails Oracle
+           ==================================================================== -->
+      <div id="tabCommerceView" class="console-tab-pane active">
+        
+        <!-- Marketplace Section (6 Fluid & Appealing Product Cards) -->
+        <section class="console-section" id="consoleMarketplace">
+          <div class="console-section-header">
+            <div>
+              <div class="section-title-row">
+                <h3 class="console-section-title">Autonomous Services Marketplace</h3>
+                <span class="badge-pill badge-neutral">6 Active M2M Contracts</span>
+              </div>
+              <p class="console-section-sub">Select an enterprise service to initiate an autonomous A2A procurement with Google AP2 Intent Mandates and PayPal conditional escrow.</p>
+            </div>
+          </div>
+
+          <div class="marketplace-grid">
+            <!-- Card 1: NVIDIA H100 GPU Inference -->
+            <div class="service-card" data-sku="COMPUTE-H100-BURST">
+              <div class="service-badge-row">
+                <span class="service-category">COMPUTE / INFERENCE</span>
+                <span class="badge-pill badge-sla">SLA &lt; 60s</span>
+              </div>
+              <div class="service-card-main">
+                <div class="service-card-icon"><i data-lucide="zap"></i></div>
+                <h4 class="service-title">High-Performance GPU Inference Burst</h4>
+              </div>
+              <p class="service-desc">100 Clustered SXM5 TensorRT FP8 execution units for autonomous agent LLM batch workloads.</p>
+              <div class="service-pricing-row">
+                <div class="price-box">
+                  <span class="price-amount tabular-nums">$28.00</span>
+                  <span class="price-currency">USD</span>
+                </div>
+                <div class="rail-picker">
+                  <button class="rail-btn active" data-rail="PAYPAL_BALANCE">PayPal</button>
+                  <button class="rail-btn" data-rail="PYUSD">PYUSD</button>
+                </div>
+              </div>
+              <button class="btn-apple-primary btn-block btn-procure" data-sku="COMPUTE-H100-BURST">
+                <i data-lucide="zap"></i>
+                <span>Procure via AP2 Escrow</span>
+              </button>
+            </div>
+
+            <!-- Card 2: Q4 Financial Sentiment -->
+            <div class="service-card featured-service" data-sku="FIN-SENTIMENT-Q4">
+              <div class="card-featured-pill">POPULAR FOR AGENTS</div>
+              <div class="service-badge-row">
+                <span class="service-category">FINANCIAL INTELLIGENCE</span>
+                <span class="badge-pill badge-sla">SLA &lt; 120s</span>
+              </div>
+              <div class="service-card-main">
+                <div class="service-card-icon"><i data-lucide="database"></i></div>
+                <h4 class="service-title">Q4 Financial Sentiment Dataset</h4>
+              </div>
+              <p class="service-desc">10,000 SEC 10-K/10-Q &amp; Bloomberg NLP sentiment vectors from earnings transcripts.</p>
+              <div class="service-pricing-row">
+                <div class="price-box">
+                  <span class="price-amount tabular-nums">$25.00</span>
+                  <span class="price-currency">USD / PYUSD</span>
+                </div>
+                <div class="rail-picker">
+                  <button class="rail-btn active" data-rail="PAYPAL_BALANCE">PayPal</button>
+                  <button class="rail-btn" data-rail="PYUSD">PYUSD</button>
+                </div>
+              </div>
+              <button class="btn-apple-primary btn-block btn-procure" data-sku="FIN-SENTIMENT-Q4">
+                <i data-lucide="shield-check"></i>
+                <span>Procure via AP2 Escrow</span>
+              </button>
+            </div>
+
+            <!-- Card 3: Real-Time FinTech AP2 Gateway -->
+            <div class="service-card" data-sku="API-GATEWAY-SUB">
+              <div class="service-badge-row">
+                <span class="service-category">GATEWAY / PROXY</span>
+                <span class="badge-pill badge-sla">SLA &lt; 30s</span>
+              </div>
+              <div class="service-card-main">
+                <div class="service-card-icon"><i data-lucide="key-round"></i></div>
+                <h4 class="service-title">Real-Time FinTech AP2 Gateway</h4>
+              </div>
+              <p class="service-desc">50,000 RPC call session key with signed AP2 routing, rate-limiting, and dual-rail hooks.</p>
+              <div class="service-pricing-row">
+                <div class="price-box">
+                  <span class="price-amount tabular-nums">$15.00</span>
+                  <span class="price-currency">USD</span>
+                </div>
+                <div class="rail-picker">
+                  <button class="rail-btn active" data-rail="PAYPAL_BALANCE">PayPal</button>
+                  <button class="rail-btn" data-rail="PYUSD">PYUSD</button>
+                </div>
+              </div>
+              <button class="btn-apple-primary btn-block btn-procure" data-sku="API-GATEWAY-SUB">
+                <i data-lucide="key-round"></i>
+                <span>Procure via AP2 Escrow</span>
+              </button>
+            </div>
+
+            <!-- Card 4: Smart Contract Formal Verification -->
+            <div class="service-card" data-sku="SMART-AUDIT-FORMAL">
+              <div class="service-badge-row">
+                <span class="service-category">SECURITY / VERIFICATION</span>
+                <span class="badge-pill badge-sla">SLA &lt; 120s</span>
+              </div>
+              <div class="service-card-main">
+                <div class="service-card-icon"><i data-lucide="shield-check"></i></div>
+                <h4 class="service-title">Smart Contract Formal Verification</h4>
+              </div>
+              <p class="service-desc">Automated AST bytecode decompilation, symbolic execution, and mathematical invariance proofs.</p>
+              <div class="service-pricing-row">
+                <div class="price-box">
+                  <span class="price-amount tabular-nums">$29.50</span>
+                  <span class="price-currency">USD</span>
+                </div>
+                <div class="rail-picker">
+                  <button class="rail-btn active" data-rail="PAYPAL_BALANCE">PayPal</button>
+                  <button class="rail-btn" data-rail="PYUSD">PYUSD</button>
+                </div>
+              </div>
+              <button class="btn-apple-primary btn-block btn-procure" data-sku="SMART-AUDIT-FORMAL">
+                <i data-lucide="check-circle-2"></i>
+                <span>Procure via AP2 Escrow</span>
+              </button>
+            </div>
+
+            <!-- Card 5: Satellite Geospatial Climate Vectors -->
+            <div class="service-card" data-sku="GEO-SATELLITE-VECTORS">
+              <div class="service-badge-row">
+                <span class="service-category">GEOSPATIAL / CLIMATE</span>
+                <span class="badge-pill badge-sla">SLA &lt; 90s</span>
+              </div>
+              <div class="service-card-main">
+                <div class="service-card-icon"><i data-lucide="globe"></i></div>
+                <h4 class="service-title">Satellite Geospatial Climate Vectors</h4>
+              </div>
+              <p class="service-desc">5,000 km² Sentinel-2 multispectral imagery normalization, NDVI index, and drought risk tensors.</p>
+              <div class="service-pricing-row">
+                <div class="price-box">
+                  <span class="price-amount tabular-nums">$22.00</span>
+                  <span class="price-currency">USD</span>
+                </div>
+                <div class="rail-picker">
+                  <button class="rail-btn active" data-rail="PAYPAL_BALANCE">PayPal</button>
+                  <button class="rail-btn" data-rail="PYUSD">PYUSD</button>
+                </div>
+              </div>
+              <button class="btn-apple-primary btn-block btn-procure" data-sku="GEO-SATELLITE-VECTORS">
+                <i data-lucide="layers"></i>
+                <span>Procure via AP2 Escrow</span>
+              </button>
+            </div>
+
+            <!-- Card 6: Multilingual Whisper AI Speech -->
+            <div class="service-card" data-sku="WHISPER-SPEECH-BATCH">
+              <div class="service-badge-row">
+                <span class="service-category">AUDIO / SPEECH-TO-TEXT</span>
+                <span class="badge-pill badge-sla">SLA &lt; 80s</span>
+              </div>
+              <div class="service-card-main">
+                <div class="service-card-icon"><i data-lucide="mic"></i></div>
+                <h4 class="service-title">Multilingual Whisper AI Transcription</h4>
+              </div>
+              <p class="service-desc">500 audio minutes processed via Whisper Large-v3 with diarization and word timestamps.</p>
+              <div class="service-pricing-row">
+                <div class="price-box">
+                  <span class="price-amount tabular-nums">$18.50</span>
+                  <span class="price-currency">USD</span>
+                </div>
+                <div class="rail-picker">
+                  <button class="rail-btn active" data-rail="PAYPAL_BALANCE">PayPal</button>
+                  <button class="rail-btn" data-rail="PYUSD">PYUSD</button>
+                </div>
+              </div>
+              <button class="btn-apple-primary btn-block btn-procure" data-sku="WHISPER-SPEECH-BATCH">
+                <i data-lucide="file-audio"></i>
+                <span>Procure via AP2 Escrow</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Testing Bar -->
+          <div class="test-controls-bar">
+            <div class="test-controls-label">
+              <i data-lucide="shield-alert"></i>
+              <span>Security &amp; Fault Tolerance Demos:</span>
+            </div>
+            <div class="test-buttons-row">
+              <button class="btn-test-action" id="btnTestAdversarial">
+                <i data-lucide="skull"></i>
+                <span>Prompt Injection Attack</span>
+              </button>
+              <button class="btn-test-action" id="btnTestTampered">
+                <i data-lucide="file-x"></i>
+                <span>Tampered Deliverable Attack</span>
+              </button>
+              <button class="btn-test-action" id="btnTestTimeout">
+                <i data-lucide="timer-off"></i>
+                <span>SLA Timeout Refund</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Live Fiduciary Workspace Split (Left: Action-Oriented Copilot Thread | Right: PayPal Rails Oracle) -->
+        <section class="console-section" id="copilotWorkspaceSection">
+          <div class="fiduciary-split-layout">
+            
+            <!-- LEFT COLUMN: ACTION-ORIENTED FIDUCIARY THREAD -->
+            <div class="fiduciary-thread-container">
+              <div class="thread-header">
+                <div class="thread-header-brand">
+                  <div class="agent-avatar"><i data-lucide="bot"></i></div>
+                  <div>
+                    <div class="agent-title-row">
+                      <h4 class="agent-title">Agent Alpha Copilot</h4>
+                      <span class="badge-pill badge-neutral" id="copilotModelIndicator">Qwen Cloud / AP2 Engine</span>
+                    </div>
+                    <span class="agent-sub">Human Intent Delegation &middot; Principal: <strong>David</strong> ($30.00 Max Cap)</span>
+                  </div>
+                </div>
+                <div class="thread-header-status">
+                  <span class="badge-status-pill badge-active" id="copilotStatusBadge">
+                    <span class="status-dot"></span>
+                    <span id="copilotStatusText">STANDBY / READY</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Quick Suggestion Pills -->
+              <div class="copilot-suggestion-strip">
+                <button class="copilot-prompt-pill" data-prompt="Procure 100 compute units of NVIDIA H100 inference for my ML job. Keep spend under $30.">
+                  <i data-lucide="zap"></i>
+                  <span>Procure 100 H100 Units &lt;$30</span>
+                </button>
+                <button class="copilot-prompt-pill" data-prompt="Acquire Q4 Financial Sentiment dataset on PYUSD rails.">
+                  <i data-lucide="database"></i>
+                  <span>Financial Sentiment (PYUSD)</span>
+                </button>
+                <button class="copilot-prompt-pill" data-prompt="Run automated smart contract formal verification on my escrow contract.">
+                  <i data-lucide="shield-check"></i>
+                  <span>Formal Contract Audit</span>
+                </button>
+                <button class="copilot-prompt-pill" data-prompt="Test adversarial prompt injection attack to verify OWASP defense.">
+                  <i data-lucide="shield-alert"></i>
+                  <span>Simulate OWASP Injection</span>
+                </button>
+              </div>
+
+              <!-- Action-Oriented Thread Feed (Scrollable) -->
+              <div class="fiduciary-feed" id="fiduciaryFeed">
+                <!-- Rendered dynamically as tactile cards for Steps 1-6 -->
+              </div>
+
+              <!-- Composer Form -->
+              <div class="thread-composer-box">
+                <form id="copilotComposerForm" class="composer-form">
+                  <textarea id="copilotComposerInput" class="composer-textarea" rows="2" placeholder="Instruct Agent Alpha (e.g., 'Procure 100 compute units of NVIDIA H100 inference for my ML job. Keep spend under $30.')..."></textarea>
+                  <div class="composer-actions">
+                    <div class="composer-hints">
+                      <span class="hint-tag"><i data-lucide="shield"></i> Ed25519 Bounded</span>
+                      <span class="hint-tag"><i data-lucide="credit-card"></i> PayPal Orders v2</span>
+                    </div>
+                    <button type="submit" class="btn-apple-primary btn-sm" id="btnComposerSend">
+                      <span>Authorize &amp; Execute</span>
+                      <i data-lucide="arrow-up-right"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN: AP2 CRYPTOGRAPHIC & PAYPAL RAILS ORACLE -->
+            <div class="fiduciary-oracle-container">
+              
+              <!-- Educational Explanation Card: What is PayPal Rails Oracle? -->
+              <div class="oracle-explainer-card">
+                <div class="explainer-header">
+                  <i data-lucide="help-circle" class="explainer-icon"></i>
+                  <span class="explainer-title">What is the "PayPal Rails Oracle"?</span>
+                </div>
+                <p class="explainer-body">
+                  In pyFides, the <strong>Fiduciary Oracle</strong> is the automated verification engine.
+                  When Seller Agent Beta delivers digital work (e.g. compute logs, sentiment data), the Oracle verifies that its SHA-256 hash matches the agreed Cart Mandate. Only upon confirmed match does the Oracle fire a REST call to <strong>PayPal Rails</strong> (<code>POST /v2/payments/authorizations/{id}/capture</code>) to release escrow funds! If the deliverable is tampered or late, it automatically voids the hold to refund the buyer.
+                </p>
+              </div>
+
+              <!-- 4-Step Visual Progress Stepper -->
+              <div class="oracle-stepper">
+                <div class="step-node active" id="stepNode1">
+                  <div class="step-indicator">1</div>
+                  <div class="step-meta"><span class="step-title">Intent</span></div>
+                </div>
+                <div class="step-line" id="stepLine1"></div>
+                <div class="step-node" id="stepNode2">
+                  <div class="step-indicator">2</div>
+                  <div class="step-meta"><span class="step-title">PayPal Lock</span></div>
+                </div>
+                <div class="step-line" id="stepLine2"></div>
+                <div class="step-node" id="stepNode3">
+                  <div class="step-indicator">3</div>
+                  <div class="step-meta"><span class="step-title">Oracle Check</span></div>
+                </div>
+                <div class="step-line" id="stepLine3"></div>
+                <div class="step-node" id="stepNode4">
+                  <div class="step-indicator">4</div>
+                  <div class="step-meta"><span class="step-title">Settled</span></div>
+                </div>
+              </div>
+
+              <!-- Live PayPal Sandbox Telemetry Card -->
+              <div class="oracle-detail-card">
+                <div class="detail-card-header">
+                  <span class="card-caption">PAYPAL SANDBOX ORDERS V2 RAILS</span>
+                  <span class="badge-pill badge-paypal" id="hudOrderState">READY</span>
+                </div>
+                <div class="oracle-grid-2">
+                  <div class="oracle-field"><span class="field-label">Order ID:</span><span class="field-val mono" id="hudPaypalOrderId">—</span></div>
+                  <div class="oracle-field"><span class="field-label">Auth ID:</span><span class="field-val mono" id="hudPaypalAuthId">—</span></div>
+                  <div class="oracle-field"><span class="field-label">Capture ID:</span><span class="field-val mono" id="hudPaypalCaptureId">—</span></div>
+                  <div class="oracle-field"><span class="field-label">Rail:</span><span class="field-val mono" id="hudSettlementRail">PAYPAL_BALANCE</span></div>
+                  <div class="oracle-field col-span-2"><span class="field-label">Partner Attribution ID:</span><span class="field-val mono">FLAVORsb-hrqjx53499097_MP</span></div>
+                  <div class="oracle-field col-span-2" style="margin-top: 6px;">
+                    <button class="btn-receipt-action btn-view-ledger" id="btnHudViewInLedger" style="width: 100%; justify-content: center;">
+                      <span>View in Treasury Ledger</span>
+                      <i data-lucide="arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live Cryptographic Integrity Card -->
+              <div class="oracle-detail-card">
+                <div class="detail-card-header">
+                  <span class="card-caption">CRYPTOGRAPHIC INTEGRITY &amp; PROOFS</span>
+                  <span class="badge-pill" id="hudOracleStatus">AWAITING COMMERCE</span>
+                </div>
+                <div class="oracle-grid-2">
+                  <div class="oracle-field col-span-2"><span class="field-label">Deliverable SHA-256:</span><span class="field-val mono" id="hudDeliverableSha256">—</span></div>
+                  <div class="oracle-field col-span-2"><span class="field-label">Cart Mandate Hash:</span><span class="field-val mono" id="hudCartMandateHash">—</span></div>
+                  <div class="oracle-field"><span class="field-label">Principal Sig:</span><span class="field-val mono" id="hudPrincipalSig">VALID ✓</span></div>
+                  <div class="oracle-field"><span class="field-label">Seller Sig:</span><span class="field-val mono" id="hudSellerSig">VALID ✓</span></div>
+                </div>
+              </div>
+
+              <!-- Raw Mandate JSON Inspector with Tabs -->
+              <div class="mandate-json-inspector">
+                <div class="inspector-tab-row">
+                  <button class="json-tab-btn active" data-tab="intent">Intent Mandate</button>
+                  <button class="json-tab-btn" data-tab="cart">Cart Mandate</button>
+                  <button class="json-tab-btn" data-tab="proof">Oracle Proof</button>
+                  <button class="json-tab-btn" data-tab="paypal">PayPal REST</button>
+                </div>
+                <pre class="json-code-box"><code class="mono" id="inspectorJsonCode">// AP2 Mandate inspection stream ready</code></pre>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ====================================================================
+           TAB VIEW 2: TREASURY LEDGER & RISK ANALYTICS
+           Houses the Executive KPI Cards, AG Charts Analytics, and AG Grid Ledger
+           ==================================================================== -->
+      <div id="tabTreasuryView" class="console-tab-pane">
+        
+        <!-- AG Charts Treasury Analytics -->
+        <section class="console-section" id="consoleAnalytics">
+          <div class="console-section-header">
+            <div>
+              <h3 class="console-section-title">Treasury &amp; Risk Analytics (AG Charts)</h3>
+              <p class="console-section-sub">Real-time settlement telemetry, liquidity metrics, and dispute defense rates powered by AG Charts and PayPal Sandbox v2.</p>
+            </div>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-card-title">TOTAL GMV SETTLED</span>
+              <div class="metric-card-value tabular-nums" id="metricTotalGmv">$0.00</div>
+              <span class="metric-sub">Across PayPal &amp; PYUSD</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card-title">ACTIVE CAPITAL HELD</span>
+              <div class="metric-card-value tabular-nums" id="metricActiveHeld">$0.00</div>
+              <span class="metric-sub">Locked in Orders v2 Escrow</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card-title">THREATS QUARANTINED</span>
+              <div class="metric-card-value tabular-nums" id="metricThreatsQuarantined">2</div>
+              <span class="metric-sub">OWASP Top 10 Injections</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card-title">DISPUTE PREVENTION RATE</span>
+              <div class="metric-card-value tabular-nums" id="metricDisputeRate">100.0%</div>
+              <span class="metric-sub">Zero-Trust Oracle release</span>
+            </div>
+          </div>
+
+          <div class="charts-grid">
+            <div class="chart-card chart-card-wide">
+              <div class="chart-header-row">
+                <h4 class="chart-title">Volume &amp; Settlement Flow Over Time</h4>
+                <span class="badge-pill badge-neutral">Dual-Rail Telemetry</span>
+              </div>
+              <div class="chart-container" id="chartVolumeTimeline"></div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-header-row">
+                <h4 class="chart-title">Risk &amp; Defense Breakdown</h4>
+                <span class="badge-pill badge-neutral">Zero Counterparty Loss</span>
+              </div>
+              <div class="chart-container" id="chartRiskBreakdown"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AG Grid Transaction Ledger -->
+        <section class="console-section" id="consoleLedger">
+          <div class="console-section-header">
+            <div>
+              <h3 class="console-section-title">A2A Settlement Ledger (AG Studio / AG Grid)</h3>
+              <p class="console-section-sub">Immutable multi-tier transaction ledger with cryptographic proof audits and payload inspection.</p>
+            </div>
+          </div>
+          <div class="ledger-card">
+            <div class="ledger-toolbar">
+              <input type="text" id="ledgerQuickFilter" placeholder="Filter by transaction hash, SKU, or state..." class="apple-input">
+              <div class="toolbar-right">
+                <div class="filter-pills-group">
+                  <button class="filter-pill active" data-rail-filter="ALL">All Rails</button>
+                  <button class="filter-pill" data-rail-filter="PAYPAL_BALANCE">PayPal USD</button>
+                  <button class="filter-pill" data-rail-filter="PYUSD">PYUSD</button>
+                </div>
+                <button class="btn-apple-secondary btn-sm" id="btnRefreshLedger"><i data-lucide="rotate-cw"></i><span>Refresh</span></button>
+                <button class="btn-apple-secondary btn-sm" id="btnExportLedgerCsv"><i data-lucide="download"></i><span>Export CSV</span></button>
+              </div>
+            </div>
+            <div id="agGridLedger" class="ag-theme-quartz-custom" style="width: 100%; height: 460px;"></div>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       VERIFIABLE AP2 CRYPTOGRAPHIC SETTLEMENT RECEIPT MODAL
+       ====================================================================== -->
+  <div class="modal-backdrop" id="receiptModalBackdrop"></div>
+  <div class="receipt-modal" id="receiptModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <div class="cert-seal"><i data-lucide="award"></i></div>
+          <div>
+            <span class="cert-eyebrow">OFFICIAL SETTLEMENT CERTIFICATE</span>
+            <h3 class="modal-title">Verifiable AP2 Fiduciary Receipt</h3>
+          </div>
+        </div>
+        <button class="btn-icon-close" id="btnCloseReceiptModal"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body" id="receiptModalBody">
+        <div class="cert-banner">
+          <div class="cert-status-badge">
+            <i data-lucide="shield-check" class="status-icon"></i>
+            <span>CRYPTOGRAPHICALLY VERIFIED &amp; SETTLED</span>
+          </div>
+          <span class="cert-date" id="receiptDate">—</span>
+        </div>
+        <div class="cert-meta-grid">
+          <div class="cert-row"><span class="cert-label">Transaction ID:</span><span class="cert-value mono" id="receiptTxId">—</span></div>
+          <div class="cert-row"><span class="cert-label">Procured SKU:</span><span class="cert-value" id="receiptSku">—</span></div>
+          <div class="cert-row"><span class="cert-label">Settlement Amount:</span><span class="cert-value tabular-nums highlight-amount" id="receiptAmount">—</span></div>
+          <div class="cert-row"><span class="cert-label">Settlement Rail:</span><span class="cert-value mono" id="receiptRail">—</span></div>
+          <div class="cert-row"><span class="cert-label">PayPal Order ID:</span><span class="cert-value mono" id="receiptOrderId">—</span></div>
+          <div class="cert-row"><span class="cert-label">PayPal Auth ID:</span><span class="cert-value mono" id="receiptAuthId">—</span></div>
+          <div class="cert-row"><span class="cert-label">PayPal Capture ID:</span><span class="cert-value mono" id="receiptCaptureId">—</span></div>
+          <div class="cert-row"><span class="cert-label">Sandbox Merchant Payee:</span><span class="cert-value mono" id="receiptMerchantPayee">sb-hrqjx53499097@business.example.com</span></div>
+          <div class="cert-row"><span class="cert-label">Net Disbursed:</span><span class="cert-value tabular-nums highlight-amount" id="receiptNetDisbursed">—</span></div>
+          <div class="cert-row"><span class="cert-label">Partner Attribution ID:</span><span class="cert-value mono">FLAVORsb-hrqjx53499097_MP</span></div>
+        </div>
+        <div class="cert-hashes-section">
+          <div class="hash-box">
+            <div class="hash-title">Deliverable SHA-256 Digest (Oracle Verified Match ✓)</div>
+            <div class="hash-string mono" id="receiptDeliverableHash">—</div>
+          </div>
+          <div class="hash-box">
+            <div class="hash-title">Cart Mandate Canonical Hash (RFC 8785)</div>
+            <div class="hash-string mono" id="receiptCartHash">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn-apple-primary" id="btnOpenPayPalDashboard" target="_blank" href="https://developer.paypal.com/dashboard/" style="text-decoration:none;">
+          <i data-lucide="external-link"></i>
+          <span>PayPal Sandbox Activity ↗</span>
+        </a>
+        <button class="btn-apple-secondary" id="btnModalViewLedger">
+          <i data-lucide="table-2"></i>
+          <span>View in Ledger</span>
+        </button>
+        <button class="btn-apple-secondary" id="btnDownloadReceipt"><i data-lucide="download"></i><span>Download (.json)</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
