@@ -34,7 +34,7 @@ services:
       - key: AP2_MANDATE_TIMEOUT_SECONDS
         value: "180"
       - key: QWEN_MODEL
-        value: qwen-plus
+        value: kimi-k3.1-pro
       - key: QWEN_BASE_URL
         value: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
       - key: QWEN_API_KEY

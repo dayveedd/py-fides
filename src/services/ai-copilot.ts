@@ -23,7 +23,7 @@ export class AiCopilotService {
 
   constructor() {
     this.apiKey = process.env.QWEN_API_KEY || 'sk-ws-H.XHYXMR.QZHK.MEYCIQC_ZGr-K6Ej-6mINuhZRd-3GWNwiKxt6OpP57_JMx0K6QIhANDvWLBdPi9al4sXqvLIi8vHS028Z9JO5eT5mlvtzWFY';
-    this.model = process.env.QWEN_MODEL || 'qwen-plus';
+    this.model = process.env.QWEN_MODEL || 'kimi-k3.1-pro';
     this.baseUrl = process.env.QWEN_BASE_URL || 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1';
   }
 
@@ -51,7 +51,7 @@ export class AiCopilotService {
 
   private async callQwenModel(userMessage: string): Promise<ParsedFiduciaryIntent | null> {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 3500);
+    const timeout = setTimeout(() => controller.abort(), 18000);
 
     const systemPrompt = `You are Buyer Agent Alpha's natural language parser for pyFides, an AP2-compliant autonomous machine-to-machine escrow agent on PayPal rails.
 Given the user prompt, output ONLY a valid JSON object with these exact keys:
@@ -66,21 +66,27 @@ Given the user prompt, output ONLY a valid JSON object with these exact keys:
 }`;
 
     try {
+      const requestPayload: Record<string, unknown> = {
+        model: this.model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userMessage },
+        ],
+        response_format: { type: 'json_object' },
+      };
+
+      // Kimi-k3 models do not accept custom temperature parameter
+      if (!this.model.toLowerCase().includes('kimi')) {
+        requestPayload.temperature = 0.1;
+      }
+
       const response = await fetch(`${this.baseUrl}/chat/completions`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          model: this.model,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: userMessage },
-          ],
-          temperature: 0.1,
-          response_format: { type: 'json_object' },
-        }),
+        body: JSON.stringify(requestPayload),
         signal: controller.signal,
       });
 
@@ -103,7 +109,7 @@ Given the user prompt, output ONLY a valid JSON object with these exact keys:
         isTampered: Boolean(parsed.isTampered),
         isTimeout: Boolean(parsed.isTimeout),
         explanation: parsed.explanation || 'Delegated spend validated within Intent Mandate bounds.',
-        sourceModel: `Qwen Cloud (${this.model})`,
+        sourceModel: `Cloud Engine (${this.model})`,
       };
     } catch {
       clearTimeout(timeout);
