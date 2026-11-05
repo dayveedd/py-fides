@@ -645,7 +645,26 @@ body{background:#F7F7F6}
 <main class="amain" id="treasury">
   <header class="atop">
     <div><div class="crumbs"><a href="index.html">pyFides</a><span>/</span><span>Treasury</span></div><h1>Treasury</h1><p>Where agent money is right now, and what released it. Sandbox demo values.</p></div>
-    <div class="row"><span class="tbtn" aria-label="Date range"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>29 Oct – 4 Nov 2026</span><button class="tbtn" type="button" id="exportCsv"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Export CSV</button><a class="tbtn pri" href="console.html"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Run a purchase</a></div>
+    <div class="row">
+      <div style="position:relative;display:inline-block">
+        <button class="tbtn" type="button" id="btnDateFilter" aria-haspopup="true" aria-expanded="false" style="display:inline-flex;align-items:center;gap:7px;cursor:pointer">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="2" y="3" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <span id="dateRangeLabel">29 Oct – 5 Nov 2026</span>
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true" style="margin-left:2px"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div id="dateMenu" class="card" style="display:none;position:absolute;top:calc(100% + 6px);right:0;width:240px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 32px rgba(0,28,100,0.14);z-index:100;padding:6px;flex-direction:column;gap:3px">
+          <button type="button" class="dopt active" data-d="all" style="width:100%;text-align:left;padding:8px 12px;border:none;background:none;border-radius:8px;font:500 13px var(--f-ui);color:var(--fg);cursor:pointer;display:flex;justify-content:space-between;align-items:center"><span>All Dates (Full History)</span><span class="chk">✓</span></button>
+          <button type="button" class="dopt" data-d="today" style="width:100%;text-align:left;padding:8px 12px;border:none;background:none;border-radius:8px;font:500 13px var(--f-ui);color:var(--fg);cursor:pointer;display:flex;justify-content:space-between;align-items:center"><span>Today (5 Nov 2026)</span><span class="chk" style="display:none">✓</span></button>
+          <button type="button" class="dopt" data-d="yesterday" style="width:100%;text-align:left;padding:8px 12px;border:none;background:none;border-radius:8px;font:500 13px var(--f-ui);color:var(--fg);cursor:pointer;display:flex;justify-content:space-between;align-items:center"><span>Yesterday (4 Nov 2026)</span><span class="chk" style="display:none">✓</span></button>
+          <button type="button" class="dopt" data-d="7d" style="width:100%;text-align:left;padding:8px 12px;border:none;background:none;border-radius:8px;font:500 13px var(--f-ui);color:var(--fg);cursor:pointer;display:flex;justify-content:space-between;align-items:center"><span>Last 7 Days (29 Oct – 5 Nov)</span><span class="chk" style="display:none">✓</span></button>
+        </div>
+      </div>
+      <button class="tbtn" type="button" id="exportCsv"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Export CSV</button>
+      <a class="tbtn pri" href="console.html"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Run a purchase</a>
+    </div>
   </header>
   <section class="panel sumstrip" aria-label="Summary">
     <div class="sum"><span class="l">Volume settled · 7 days</span><span class="v" id="kVol">$12,450.00</span><span class="s"><span class="delta up">▲ 18.4%</span>vs last week</span></div>
@@ -656,14 +675,18 @@ body{background:#F7F7F6}
   </section>
   <section class="cgrid2" aria-label="Charts">
     <figure class="panel" style="margin:0">
-      <div class="p-head"><div><h2>Settled volume</h2><p>Cumulative, USD thousands. Hover or use the arrow keys.</p></div>
-        <div class="seg2" id="volSeg"><span class="si" aria-hidden="true"></span><button type="button" data-s="all" aria-pressed="true">Both rails</button><button type="button" data-s="pp" aria-pressed="false">PayPal</button><button type="button" data-s="py" aria-pressed="false">PYUSD</button></div></div>
-      <div class="legend" style="padding:12px 22px 0"><span><i class="sw"></i>PayPal Orders v2 · $9.86k</span><span><i class="sw d"></i>PYUSD (pending confirmation) · $2.59k</span></div>
-      <div class="cwrap" id="volChart" tabindex="0" role="img" aria-label="Cumulative settled volume, 29 October to 4 November: PayPal rises to 9.86 thousand dollars, PYUSD to 2.59 thousand"><svg viewBox="0 0 640 250"></svg><div class="tip" id="volTip" aria-hidden="true"></div></div>
+      <div class="p-head">
+        <div><h2 style="font:600 17px/1.3 var(--f-ui);letter-spacing:-0.02em">Settled volume (AG Charts)</h2><p style="font-size:12.5px;color:var(--muted);margin:2px 0 0">Cumulative USD volume across settlement rails</p></div>
+        <div class="seg2" id="volSeg" role="group" aria-label="Rail filter"><span class="si" aria-hidden="true"></span><button type="button" data-s="both" aria-pressed="true">Both rails</button><button type="button" data-s="pp" aria-pressed="false">PayPal</button><button type="button" data-s="py" aria-pressed="false">PYUSD</button></div>
+      </div>
+      <div id="volChartBox" style="position:relative;padding:10px 14px 14px"><div id="volChartAg" style="width:100%;height:270px;"></div></div>
     </figure>
     <figure class="panel" style="margin:0">
-      <div class="p-head"><div><h2>Capture time</h2><p>Median, from hash match to PayPal capture (ms)</p></div></div>
-      <div class="cwrap" id="latChart" role="img" aria-label="Median capture time per day between 129 and 151 milliseconds; today 140"><svg viewBox="0 0 520 200"></svg><div class="tip" id="latTip" aria-hidden="true"></div></div>
+      <div class="p-head">
+        <div><h2 style="font:600 17px/1.3 var(--f-ui);letter-spacing:-0.02em">Pipeline telemetry (AG Charts)</h2><p style="font-size:12.5px;color:var(--muted);margin:2px 0 0">Stage latency distribution from authorization to oracle settlement</p></div>
+        <span class="pill p-ok" style="font-size:11px"><span class="dot"></span>Real-time telemetry</span>
+      </div>
+      <div id="latChartBox" style="position:relative;padding:10px 14px 14px"><div id="latChartAg" style="width:100%;height:270px;"></div></div>
     </figure>
   </section>
   <section class="panel" id="ledger" aria-labelledby="l-h">
@@ -759,11 +782,38 @@ body{background:#F7F7F6}
     var rDate = r.rawDate ? new Date(r.rawDate) : new Date();
     if(isNaN(rDate.getTime())) return true;
 
-    var diffDays = (now.setHours(0,0,0,0) - new Date(rDate).setHours(0,0,0,0)) / (1000 * 60 * 60 * 24);
+    var nowDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    var rDateOnly = new Date(rDate.getFullYear(), rDate.getMonth(), rDate.getDate()).getTime();
+    var diffDays = Math.round((nowDateOnly - rDateOnly) / (1000 * 60 * 60 * 24));
+
     if(dateF === 'today') return diffDays === 0;
     if(dateF === 'yesterday') return diffDays === 1;
     if(dateF === '7d') return diffDays >= 0 && diffDays <= 7;
     return true;
+  }
+
+  function setDateFilter(val) {
+    dateF = val;
+    var labels = {
+      all: '29 Oct – 5 Nov 2026',
+      today: 'Today (5 Nov 2026)',
+      yesterday: 'Yesterday (4 Nov 2026)',
+      '7d': '29 Oct – 5 Nov 2026'
+    };
+    var lbl = $('#dateRangeLabel');
+    if(lbl) lbl.textContent = labels[val] || val;
+
+    var fDate = $('#fDate');
+    if(fDate && fDate.value !== val) fDate.value = val;
+
+    $$('.dopt').forEach(function(b){
+      var match = b.getAttribute('data-d') === val;
+      b.classList.toggle('active', match);
+      var chk = b.querySelector('.chk');
+      if(chk) chk.style.display = match ? 'inline' : 'none';
+    });
+
+    render();
   }
 
   function visible(){
@@ -812,7 +862,30 @@ body{background:#F7F7F6}
   $('#fState').addEventListener('change',function(){stateF=this.value;render()});
   var fDateEl = $('#fDate');
   if(fDateEl){
-    fDateEl.addEventListener('change', function(){dateF=this.value;render()});
+    fDateEl.addEventListener('change', function(){setDateFilter(this.value)});
+  }
+  var btnDate = $('#btnDateFilter');
+  var dateMenu = $('#dateMenu');
+  if(btnDate && dateMenu){
+    btnDate.addEventListener('click', function(e){
+      e.stopPropagation();
+      var show = dateMenu.style.display === 'none' || !dateMenu.style.display;
+      dateMenu.style.display = show ? 'flex' : 'none';
+      btnDate.setAttribute('aria-expanded', show);
+    });
+    document.addEventListener('click', function(e){
+      if(!dateMenu.contains(e.target) && e.target !== btnDate){
+        dateMenu.style.display = 'none';
+        btnDate.setAttribute('aria-expanded', 'false');
+      }
+    });
+    $$('.dopt').forEach(function(b){
+      b.addEventListener('click', function(){
+        setDateFilter(this.getAttribute('data-d'));
+        dateMenu.style.display = 'none';
+        btnDate.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
   $('#lgSearch').addEventListener('input',function(){q=this.value.trim().toLowerCase();render()});
   
@@ -840,12 +913,15 @@ body{background:#F7F7F6}
   var agChartVolume = null;
   var agChartLatency = null;
   var agRailFilter = 'both';
+  var cachedTimeline = null;
+  var cachedLatency = null;
 
   function renderAgVolumeChart(timelineData) {
     var c = document.getElementById('volChartAg');
     if(!c || !window.agCharts) return;
+    if(timelineData) cachedTimeline = timelineData;
 
-    var data = (timelineData && timelineData.length > 0) ? timelineData : [
+    var data = (cachedTimeline && cachedTimeline.length > 0) ? cachedTimeline : [
       { time: '10:00', usdVolume: 0, pyusdVolume: 0 },
       { time: '11:00', usdVolume: 28.0, pyusdVolume: 0 },
       { time: '12:00', usdVolume: 28.0, pyusdVolume: 25.0 },
@@ -854,7 +930,7 @@ body{background:#F7F7F6}
     ];
 
     var series = [];
-    if(agRailFilter === 'both' || agRailFilter === 'pp') {
+    if(agRailFilter === 'both' || agRailFilter === 'all' || agRailFilter === 'pp') {
       series.push({
         type: 'area',
         xKey: 'time',
@@ -866,7 +942,7 @@ body{background:#F7F7F6}
         strokeWidth: 2
       });
     }
-    if(agRailFilter === 'both' || agRailFilter === 'py') {
+    if(agRailFilter === 'both' || agRailFilter === 'all' || agRailFilter === 'py') {
       series.push({
         type: 'area',
         xKey: 'time',
@@ -881,7 +957,6 @@ body{background:#F7F7F6}
 
     var options = {
       container: c,
-      autoSize: true,
       data: data,
       series: series,
       axes: [
@@ -898,8 +973,9 @@ body{background:#F7F7F6}
   function renderAgLatencyChart(latencyData) {
     var c = document.getElementById('latChartAg');
     if(!c || !window.agCharts) return;
+    if(latencyData) cachedLatency = latencyData;
 
-    var data = (latencyData && latencyData.length > 0) ? latencyData : [
+    var data = (cachedLatency && cachedLatency.length > 0) ? cachedLatency : [
       { stage: 'PayPal Auth Hold', latencyMs: 124 },
       { stage: 'Agent Execution', latencyMs: 182 },
       { stage: 'Oracle Hash Verify', latencyMs: 2 },
@@ -908,7 +984,6 @@ body{background:#F7F7F6}
 
     var options = {
       container: c,
-      autoSize: true,
       data: data,
       series: [
         {
@@ -1052,7 +1127,7 @@ body{background:#F7F7F6}
         bump($('#kHeld'), 0, heldC, function(v){return money(Math.round(v))});
         bump($('#kN'), 0, totalN, function(v){return String(Math.round(v))});
 
-        if(m.volumeTimeline) {
+        if(m.volumeTimeline && m.volumeTimeline.length > 0) {
           var mappedTimeline = m.volumeTimeline.map(function(t){
             return {
               time: t.timeLabel,
@@ -1061,38 +1136,50 @@ body{background:#F7F7F6}
             };
           });
           renderAgVolumeChart(mappedTimeline);
+        } else {
+          renderAgVolumeChart();
         }
-        if(m.latencyDistribution) {
+
+        if(m.latencyDistribution && m.latencyDistribution.length > 0) {
           renderAgLatencyChart(m.latencyDistribution);
+        } else {
+          renderAgLatencyChart();
         }
       }
-    } catch(e) {}
+    } catch(e) {
+      console.warn('Metrics fetch error:', e);
+      renderAgVolumeChart();
+      renderAgLatencyChart();
+    }
 
     try {
       var tRes = await fetch('/api/transactions');
+      if(!tRes.ok) tRes = await fetch('/api/ledger');
       if(tRes.ok) {
-        var txs = await tRes.json();
-        if(Array.isArray(txs) && txs.length > 0) {
+        var respData = await tRes.json();
+        var rawList = Array.isArray(respData) ? respData : (respData.rows || respData.transactions || []);
+        if(Array.isArray(rawList) && rawList.length > 0) {
           LEDGER = []; // reset strictly to real data
-          txs.forEach(function(tx){
+          rawList.forEach(function(tx){
             var stateKey = 'settled';
-            if(tx.state === 'ESCROW_LOCKED' || tx.state === 'ESCROW_LOCKING') stateKey = 'held';
-            else if(tx.state === 'QUARANTINED') stateKey = 'quarantined';
-            else if(tx.state === 'ESCROW_VOIDED' || tx.state === 'SETTLEMENT_REJECTED') stateKey = 'refunded';
+            var st = (tx.state || '').toUpperCase();
+            if(st === 'ESCROW_LOCKED' || st === 'ESCROW_LOCKING' || st === 'HELD') stateKey = 'held';
+            else if(st === 'QUARANTINED' || st === 'SETTLEMENT_REJECTED') stateKey = 'quarantined';
+            else if(st === 'ESCROW_VOIDED' || st === 'VOIDED' || st === 'REFUNDED') stateKey = 'refunded';
 
             var item = {
-              id: tx.transactionId,
+              id: tx.transactionId || ('TX-' + Math.random().toString(36).substr(2,8).toUpperCase()),
               s: stateKey,
               sku: tx.sku || 'COMPUTE-H100-BURST',
-              rail: tx.settlementRail === 'PYUSD' ? 'PYUSD' : 'PayPal',
+              rail: (tx.settlementRail === 'PYUSD' || tx.currency === 'PYUSD') ? 'PYUSD' : 'PayPal',
               cents: Math.round(Number(tx.amount || 28) * 100),
-              seller: tx.seller || 'seller.beta',
+              seller: tx.seller || (tx.rawCartMandate && tx.rawCartMandate.seller && tx.rawCartMandate.seller.agent_id) || 'seller.beta',
               time: tx.createdAt ? new Date(tx.createdAt).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'}) : 'Just now',
-              rawDate: tx.createdAt,
+              rawDate: tx.createdAt || new Date().toISOString(),
               g: 'Today',
               paypalOrderId: tx.paypalOrderId,
-              paypalAuthorizationId: tx.paypalAuthorizationId,
-              paypalCaptureId: tx.paypalCaptureId,
+              paypalAuthorizationId: tx.paypalAuthorizationId || tx.authorizationId,
+              paypalCaptureId: tx.paypalCaptureId || tx.captureId,
               deliverableSha256: tx.deliverableSha256,
               mandateCap: tx.mandateCap || 30.00
             };
@@ -1101,7 +1188,9 @@ body{background:#F7F7F6}
           render();
         }
       }
-    } catch(e) {}
+    } catch(e) {
+      console.error('Transactions load error:', e);
+    }
   }
 
   loadBackendData();
@@ -1131,13 +1220,13 @@ body{background:#F7F7F6}
               sku: data.row?.sku || 'COMPUTE-H100-BURST',
               rail: data.row?.settlementRail === 'PYUSD' ? 'PYUSD' : 'PayPal',
               cents: Math.round(Number(data.row?.amount || 28) * 100),
-              seller: data.row?.seller || 'seller.beta',
+              seller: data.row?.seller || data.row?.rawCartMandate?.seller?.agent_id || 'seller.beta',
               time: 'Just now',
               rawDate: new Date().toISOString(),
               g: 'Today',
               paypalOrderId: data.row?.paypalOrderId,
-              paypalAuthorizationId: data.row?.paypalAuthorizationId,
-              paypalCaptureId: data.row?.paypalCaptureId,
+              paypalAuthorizationId: data.row?.paypalAuthorizationId || data.row?.authorizationId,
+              paypalCaptureId: data.row?.paypalCaptureId || data.row?.captureId,
               deliverableSha256: data.row?.deliverableSha256,
               mandateCap: data.row?.mandateCap || 30.00
             };

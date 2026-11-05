@@ -134,6 +134,16 @@ app.get('/api/ledger', (req, res) => {
   });
 });
 
+app.get('/api/transactions', (req, res) => {
+  const rows = escrowFiduciary.getLedgerRows();
+  res.json({
+    success: true,
+    rows,
+    transactions: rows,
+    count: rows.length,
+  });
+});
+
 /**
  * Dedicated AG Charts & Executive Business Analytics Endpoint
  */

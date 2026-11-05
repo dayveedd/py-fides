@@ -152,8 +152,14 @@ table{border-collapse:collapse;width:100%}
 @media (max-width:640px){.market{grid-template-columns:1fr}}
 .copilot{position:sticky;top:22px;background:var(--surface);display:flex;flex-direction:column;min-width:0;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow);transition:all .24s var(--ease-fides)}
 @media (max-width:980px){.copilot{position:static}}
-.copilot.expanded{position:fixed!important;inset:20px;max-width:940px;max-height:calc(100vh - 40px);margin:auto;z-index:1000;box-shadow:0 30px 80px -10px rgba(0,28,100,0.35),0 0 0 100vmax rgba(28,25,23,0.48);border-radius:24px}
-.copilot-scrim{position:fixed;inset:0;background:rgba(28,25,23,0.48);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:999;display:none}
+.copilot.expanded{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:min(620px,calc(100vw - 32px))!important;max-width:620px!important;height:min(640px,calc(100vh - 40px))!important;max-height:calc(100vh - 40px)!important;inset:auto!important;margin:0!important;z-index:1000;box-shadow:0 24px 64px -12px rgba(0,28,100,0.35),0 0 0 100vmax rgba(28,25,23,0.48);border-radius:20px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
+.copilot.expanded .cp-head{padding:14px 18px;flex-shrink:0}
+.copilot.expanded .thread{flex:1;min-height:0;overflow-y:auto;padding:18px 20px;gap:12px}
+.copilot.expanded .empty{margin:12px auto;max-width:460px;padding:12px 0;gap:8px}
+.copilot.expanded .empty .serif{font-size:24px;line-height:1.15}
+.copilot.expanded .empty p{font-size:13.5px;line-height:1.45}
+.copilot.expanded .dock{padding:12px 18px 16px;flex-shrink:0;background:var(--surface);border-top:1px solid var(--line)}
+.copilot-scrim{position:fixed;inset:0;background:rgba(28,25,23,0.48);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:999;display:none}
 .copilot.expanded ~ .copilot-scrim{display:block}
 .svc{padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;border-radius:18px;background:var(--surface);border:1px solid var(--line);box-shadow:0 1px 3px rgba(0,28,100,0.03);transition:border-color var(--d-fast) var(--ease-out),box-shadow var(--d-fast) var(--ease-out),transform var(--d-press) var(--ease-out)}
 .svc:hover{box-shadow:0 6px 20px rgba(0,28,100,0.07)}
@@ -595,6 +601,7 @@ body{background:#F4F4F2}
             </form>
           </div>
         </aside>
+        <div class="copilot-scrim" id="copilotScrim"></div>
       </div>
       <p class="note">Sandbox listings and demo values. PYUSD shown as an option pending PayPal confirmation.</p>
     </div>
@@ -766,6 +773,17 @@ body{background:#F4F4F2}
         document.body.style.overflow = '';
       }
     });
+    var scrim = $('#copilotScrim');
+    if(scrim){
+      scrim.addEventListener('click', function(){
+        if(cp.classList.contains('expanded')){
+          cp.classList.remove('expanded');
+          expI.style.display = 'block';
+          shrI.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
   }
 
   // Live WebSocket connection to Fiduciary Oracle
