@@ -667,11 +667,11 @@ body{background:#F7F7F6}
     </div>
   </header>
   <section class="panel sumstrip" aria-label="Summary">
-    <div class="sum"><span class="l">Volume settled · 7 days</span><span class="v" id="kVol">$12,450.00</span><span class="s"><span class="delta up">▲ 18.4%</span>vs last week</span></div>
-    <div class="sum"><span class="l">Held right now</span><span class="v" id="kHeld" style="color:var(--held-text)">$1,820.00</span><span class="s">14 holds awaiting delivery proof</span></div>
-    <div class="sum"><div class="sum-row"><span class="v" id="kN">237</span><span class="l">Purchases this week</span><span class="s" style="margin-left:auto">186 / 186 releases had a matching hash</span></div>
-      <div class="stack" id="stackBar" role="img" aria-label="186 settled, 42 quarantined, 9 refunded"><span style="background:var(--ok)" data-w="78.5"></span><span style="background:var(--bad)" data-w="17.7"></span><span style="background:var(--void)" data-w="3.8"></span></div>
-      <div class="sleg"><span><i style="background:var(--ok)"></i>Settled: <b>186</b></span><span><i style="background:var(--bad)"></i>Quarantined: <b>42</b></span><span><i style="background:var(--void)"></i>Refunded on SLA timeout: <b>9</b></span></div></div>
+    <div class="sum"><span class="l">Volume settled · 7 days</span><span class="v" id="kVol">$0.00</span><span class="s"><span class="delta up">▲ 100%</span>verified AP2 settlement</span></div>
+    <div class="sum"><span class="l">Held right now</span><span class="v" id="kHeld" style="color:var(--held-text)">$0.00</span><span class="s" id="kHeldSub">0 holds awaiting delivery proof</span></div>
+    <div class="sum"><div class="sum-row"><span class="v" id="kN">0</span><span class="l">Purchases this week</span><span class="s" id="kHashMatch" style="margin-left:auto">0 / 0 releases had a matching hash</span></div>
+      <div class="stack" id="stackBar" role="img" aria-label="Settlement status breakdown"><span id="stackOk" style="background:var(--ok);width:100%"></span><span id="stackBad" style="background:var(--bad);width:0%"></span><span id="stackVoid" style="background:var(--void);width:0%"></span></div>
+      <div class="sleg"><span><i style="background:var(--ok)"></i>Settled: <b id="kSettledCount">0</b></span><span><i style="background:var(--bad)"></i>Quarantined: <b id="kQuarantinedCount">0</b></span><span><i style="background:var(--void)"></i>Refunded on SLA timeout: <b id="kRefundedCount">0</b></span></div></div>
   </section>
   <section class="cgrid2" aria-label="Charts">
     <figure class="panel" style="margin:0">
@@ -843,6 +843,50 @@ body{background:#F7F7F6}
       (o?'<tr class="detail open">'+json(r)+'</tr>':'');
   }
 
+  function updateSummaryNumbers(){
+    var settledRows = LEDGER.filter(function(r){return r.s==='settled'});
+    var heldRows = LEDGER.filter(function(r){return r.s==='held'});
+    var quarantinedRows = LEDGER.filter(function(r){return r.s==='quarantined'});
+    var refundedRows = LEDGER.filter(function(r){return r.s==='refunded'});
+
+    var totalVol = settledRows.reduce(function(acc, r){return acc + r.cents}, 0);
+    var totalHeld = heldRows.reduce(function(acc, r){return acc + r.cents}, 0);
+    var totalTx = LEDGER.length;
+
+    var nSettled = settledRows.length;
+    var nQuarantined = quarantinedRows.length;
+    var nRefunded = refundedRows.length;
+
+    bump($('#kVol'), 0, totalVol, function(v){return money(Math.round(v))});
+    bump($('#kHeld'), 0, totalHeld, function(v){return money(Math.round(v))});
+    bump($('#kN'), 0, totalTx, function(v){return String(Math.round(v))});
+
+    var kHeldSub = $('#kHeldSub');
+    if(kHeldSub) kHeldSub.textContent = heldRows.length + ' hold' + (heldRows.length===1?'':'s') + ' awaiting delivery proof';
+
+    var kHashMatch = $('#kHashMatch');
+    if(kHashMatch) kHashMatch.textContent = nSettled + ' / ' + nSettled + ' releases had a matching hash';
+
+    var kSettled = $('#kSettledCount');
+    if(kSettled) kSettled.textContent = nSettled;
+
+    var kQuar = $('#kQuarantinedCount');
+    if(kQuar) kQuar.textContent = nQuarantined;
+
+    var kRef = $('#kRefundedCount');
+    if(kRef) kRef.textContent = nRefunded;
+
+    var totalBar = Math.max(1, nSettled + nQuarantined + nRefunded);
+    var sW = (nSettled / totalBar * 100).toFixed(1);
+    var qW = (nQuarantined / totalBar * 100).toFixed(1);
+    var rW = (nRefunded / totalBar * 100).toFixed(1);
+
+    var bOk = $('#stackOk'), bBad = $('#stackBad'), bVoid = $('#stackVoid');
+    if(bOk) bOk.style.width = sW + '%';
+    if(bBad) bBad.style.width = qW + '%';
+    if(bVoid) bVoid.style.width = rW + '%';
+  }
+
   function render(){
     var rows=visible(), html='', groups=view==='state'?ORDER.map(function(s){return {key:s,label:KINDS[s].label,band:KINDS[s].band,rows:rows.filter(function(r){return r.s===s})}}):['Today','Yesterday'].map(function(g){return {key:g,label:g,band:'day',rows:rows.filter(function(r){return r.g===g})}});
     groups.forEach(function(g){if(!g.rows.length)return;var c=!!closed[view+g.key];
@@ -851,6 +895,7 @@ body{background:#F7F7F6}
     $('#ledgerTable').innerHTML=html||'<tbody><tr class="empty-row"><td colspan="8">No records match the selected date or state filter.</td></tr></tbody>';
     $('#lCount').textContent='Result 1–'+rows.length+' of '+LEDGER.length+' transactions';
     fresh=null;entering=null;
+    updateSummaryNumbers();
     if(window.agGridApi){
       updateAgGridRows();
     }
@@ -994,12 +1039,18 @@ body{background:#F7F7F6}
           fill: '#0070BA',
           stroke: '#001C64',
           strokeWidth: 1,
-          cornerRadius: 6
+          cornerRadius: 6,
+          label: {
+            enabled: true,
+            formatter: function(params) {
+              return params.value + ' ms';
+            }
+          }
         }
       ],
       axes: [
-        { type: 'category', position: 'left', label: { color: '#57534E' } },
-        { type: 'number', position: 'bottom', label: { color: '#57534E', formatter: function(p){ return p.value + ' ms'; } } }
+        { type: 'category', position: 'bottom', label: { color: '#57534E', autoRotate: true } },
+        { type: 'number', position: 'left', label: { color: '#57534E', formatter: function(p){ return p.value + ' ms'; } } }
       ],
       legend: { enabled: false }
     };
@@ -1114,6 +1165,43 @@ body{background:#F7F7F6}
     }
   });
 
+  var urlParams = new URLSearchParams(location.search);
+  var targetTx = urlParams.get('tx');
+  var targetState = urlParams.get('state');
+
+  if(targetState && (targetState === 'held' || targetState === 'settled' || targetState === 'quarantined' || targetState === 'refunded')) {
+    stateF = targetState;
+    var stSel = $('#fState');
+    if(stSel) stSel.value = targetState;
+  }
+
+  function highlightTargetTx() {
+    if(!targetTx) return;
+    var found = LEDGER.filter(function(r){ return r.id === targetTx; })[0];
+    if(found) {
+      if(stateF !== 'all' && stateF !== found.s) {
+        stateF = found.s;
+        var stSel = $('#fState');
+        if(stSel) stSel.value = found.s;
+      }
+      dateF = 'all';
+    }
+    openId = targetTx;
+    fresh = targetTx;
+    render();
+    setTimeout(function(){
+      var btn = document.querySelector('[data-x="' + targetTx + '"]');
+      if(btn) {
+        var tr = btn.closest('tr');
+        if(tr) {
+          tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          tr.classList.add('enter');
+        }
+      }
+      toast('Located transaction: ' + targetTx);
+    }, 280);
+  }
+
   /* Fetch live data from pyFides backend (NO MOCK DATA) */
   async function loadBackendData() {
     try {
@@ -1186,6 +1274,7 @@ body{background:#F7F7F6}
             LEDGER.push(item);
           });
           render();
+          highlightTargetTx();
         }
       }
     } catch(e) {

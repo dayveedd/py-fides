@@ -329,10 +329,20 @@ async function executeA2AProcurement(params: {
 
   // Check if security filter quarantined a threat
   if (!negotiationResult.success || !negotiationResult.cartMandate) {
+    const qRow = escrowFiduciary.recordQuarantined({
+      sku,
+      amount: isAdversarial ? 300.00 : (customBudget || 28.00),
+      intentMandate,
+      disputeNotes: negotiationResult.quarantinedThreat?.details || 'Mandate spend cap bypass blocked.',
+    });
+
     broadcast({
       source: 'OWASP_GUARD',
       type: 'THREAT_QUARANTINED',
       threat: negotiationResult.quarantinedThreat,
+      transactionId: qRow.transactionId,
+      state: 'QUARANTINED',
+      row: qRow,
       message: `Transaction halted by pyFides Zero-Trust Guard. Threat: ${negotiationResult.quarantinedThreat?.details}`,
       timestamp: new Date().toISOString(),
     });
@@ -340,6 +350,8 @@ async function executeA2AProcurement(params: {
     return {
       success: false,
       status: 'QUARANTINED',
+      transactionId: qRow.transactionId,
+      row: qRow,
       threat: negotiationResult.quarantinedThreat,
       reasoningLog: negotiationResult.reasoningLog,
     };

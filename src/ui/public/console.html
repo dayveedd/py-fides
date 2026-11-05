@@ -152,7 +152,7 @@ table{border-collapse:collapse;width:100%}
 @media (max-width:640px){.market{grid-template-columns:1fr}}
 .copilot{position:sticky;top:22px;background:var(--surface);display:flex;flex-direction:column;min-width:0;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow);transition:all .24s var(--ease-fides)}
 @media (max-width:980px){.copilot{position:static}}
-.copilot.expanded{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:min(620px,calc(100vw - 32px))!important;max-width:620px!important;height:min(640px,calc(100vh - 40px))!important;max-height:calc(100vh - 40px)!important;inset:auto!important;margin:0!important;z-index:1000;box-shadow:0 24px 64px -12px rgba(0,28,100,0.35),0 0 0 100vmax rgba(28,25,23,0.48);border-radius:20px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
+.copilot.expanded{position:fixed!important;inset:0!important;top:0!important;bottom:0!important;left:0!important;right:0!important;margin:auto!important;transform:none!important;width:min(580px,calc(100vw - 32px))!important;max-width:580px!important;height:min(620px,calc(100vh - 48px))!important;max-height:calc(100vh - 48px)!important;z-index:1000;box-shadow:0 24px 64px -12px rgba(0,28,100,0.35),0 0 0 100vmax rgba(28,25,23,0.48);border-radius:20px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
 .copilot.expanded .cp-head{padding:14px 18px;flex-shrink:0}
 .copilot.expanded .thread{flex:1;min-height:0;overflow-y:auto;padding:18px 20px;gap:12px}
 .copilot.expanded .empty{margin:12px auto;max-width:460px;padding:12px 0;gap:8px}
@@ -876,7 +876,7 @@ body{background:#F4F4F2}
             add('<article class="step q" role="alert"><div class="hd"><span class="eyebrow" style="color:var(--bad-text)">03 · Defended</span><span class="pill p-bad"><span class="dot"></span>Quarantined</span></div>'+
               '<strong style="font-size:16.5px;letter-spacing:-0.02em">Instruction injection blocked</strong><p style="font-size:13px;color:var(--muted)">The seller’s message tried to raise the spend above the signed cap and skip the hash check. The mandate bounds neutralized the exploit with zero funds exposed.</p>'+
               '<dl class="kv"><dt>Requested</dt><dd class="mono" style="color:var(--bad-text)">$300.00</dd><dt>Mandate cap</dt><dd class="mono">$30.00</dd><dt>PayPal moved</dt><dd class="mono">$0.00</dd></dl>'+
-              '<div class="row"><button class="btn btn-ghost btn-sm" type="button" data-go="treasury">See it in the ledger</button></div></article>');
+              '<div class="row"><button class="btn btn-ghost btn-sm" type="button" data-go="treasury" data-tx="'+run.txid+'" data-state="quarantined">See it in the ledger</button></div></article>');
             setStatus('p-bad','Defended');
             addLedger({id:run.txid,s:'quarantined',sku:s.sku,rail:'PayPal',cents:30000,seller:s.seller});
           });
@@ -909,7 +909,7 @@ body{background:#F4F4F2}
           add('<article class="step done"><div class="hd"><span class="eyebrow">05 · Release</span><span class="pill p-ok ring"><span class="dot"></span>Settled</span></div>'+
             '<strong style="font-size:16.5px;letter-spacing:-0.02em">Captured <span class="mono">'+amt+'</span> to <span class="mono">'+s.seller+'</span></strong>'+
             '<dl class="kv"><dt>Capture</dt><dd class="mono">'+capId+'</dd><dt>Hold to release</dt><dd class="mono">1.4 s</dd></dl>'+
-            '<div class="row"><button class="btn btn-primary btn-sm" type="button" data-cert>View certificate</button><button class="btn btn-ghost btn-sm" type="button" data-go="treasury">View in ledger</button></div></article>');
+            '<div class="row"><button class="btn btn-primary btn-sm" type="button" data-cert>View certificate</button><button class="btn btn-ghost btn-sm" type="button" data-go="treasury" data-tx="'+run.txid+'" data-state="settled">View in ledger</button></div></article>');
           setStatus('p-ok','Settled');
           settleLedger(run.txid);
           toast('Released '+amt+' to '+s.seller);
@@ -928,7 +928,20 @@ body{background:#F4F4F2}
       else start('gpu',{attack:true});
       return;
     }
-    var g=e.target.closest('[data-go]'); if(g){setView(g.getAttribute('data-go'));$('#console').scrollIntoView({behavior:RM?'auto':'smooth'});return}
+    var g=e.target.closest('[data-go]');
+    if(g){
+      var dest=g.getAttribute('data-go');
+      var txId=g.getAttribute('data-tx')||run.txid;
+      var st=g.getAttribute('data-state');
+      if(dest==='treasury'){
+        var u='treasury.html?tx='+encodeURIComponent(txId);
+        if(st) u+='&state='+encodeURIComponent(st);
+        location.href=u+'#ledger';
+        return;
+      }
+      setView(dest);
+      return;
+    }
     if(e.target.closest('[data-cert]')){openCert();return}
   });
 
@@ -981,7 +994,7 @@ body{background:#F4F4F2}
       '<div class="full"><span class="eyebrow">Mandates</span><span style="font-size:13px">AP2 checkout and payment mandates · signatures verified</span></div></div>'+
       '<div class="pass-foot"><span class="pill p-ok"><span class="dot"></span>Settled</span><span>Sandbox record · live verification</span></div></div>'+
       '<div class="row" data-copy><pre class="sr">{"tx":"'+tx+'","amount":"'+(cents/100).toFixed(2)+'","currency":"USD","payee":"'+s.seller+'","authorization":"'+authId+'","capture":"'+capId+'","order":"'+orderId+'","delivery_sha256":"'+sha+'"}</pre>'+
-      '<button class="btn btn-primary" type="button" data-cp>Copy mandate JSON</button><a class="btn btn-ghost" href="'+(capId && !capId.startsWith('CAP-DEMO') ? 'https://www.sandbox.paypal.com/activity/payment/'+capId : 'https://developer.paypal.com/dashboard/')+'" target="_blank" rel="noreferrer">PayPal Sandbox Activity</a><button class="btn btn-ghost" type="button" data-go="treasury" data-close>View in ledger</button><button class="btn btn-ghost" type="button" data-close>Close</button></div>'+
+      '<button class="btn btn-primary" type="button" data-cp>Copy mandate JSON</button><a class="btn btn-ghost" href="'+(capId && !capId.startsWith('CAP-DEMO') ? 'https://www.sandbox.paypal.com/activity/payment/'+capId : 'https://developer.paypal.com/dashboard/')+'" target="_blank" rel="noreferrer">PayPal Sandbox Activity</a><button class="btn btn-ghost" type="button" data-go="treasury" data-tx="'+tx+'" data-state="settled">View in ledger</button><button class="btn btn-ghost" type="button" data-close>Close</button></div>'+
       '</section></div>';
     var sh=$('.sheet');if(sh){sh.focus();document.body.style.overflow='hidden';}
   }

@@ -381,6 +381,45 @@ export class EscrowFiduciaryAgent {
     this.emitEvent('ARBITRATION_RESOLVED', row, `Human Arbiter executed ${decision}.`);
     return row;
   }
+
+  /**
+   * Record a quarantined adversarial attempt / spending cap violation
+   */
+  public recordQuarantined(params: {
+    transactionId?: string;
+    sku: string;
+    amount: number;
+    currency?: string;
+    settlementRail?: string;
+    intentMandate?: IntentMandate;
+    disputeNotes?: string;
+    sellerId?: string;
+  }): LedgerTransactionRow {
+    const txId = params.transactionId || `TX-${Date.now().toString(36).toUpperCase()}-SEC`;
+    const isoNow = new Date().toISOString();
+    const row: LedgerTransactionRow = {
+      transactionId: txId,
+      cartId: `cm_quarantined_${Date.now().toString(36)}`,
+      intentId: params.intentMandate?.mandate_id || `im_quarantined_${Date.now().toString(36)}`,
+      buyerId: params.intentMandate?.principal.user_id || 'usr_david_001',
+      sellerId: params.sellerId || 'seller.adversarial',
+      sku: params.sku,
+      amount: params.amount,
+      currency: params.currency || 'USD',
+      settlementRail: params.settlementRail || 'PAYPAL_BALANCE',
+      state: EscrowState.SETTLEMENT_REJECTED,
+      oracleVerified: false,
+      slaTimeoutSeconds: 0,
+      latencyMs: 14,
+      createdAt: isoNow,
+      updatedAt: isoNow,
+      rawIntentMandate: params.intentMandate,
+      disputeNotes: params.disputeNotes || 'Adversarial Prompt Injection Quarantined by OWASP Guard',
+    };
+    this.transactions.set(txId, row);
+    this.emitEvent('THREAT_QUARANTINED', row, 'Transaction quarantined: Prompt injection or mandate cap bypass blocked.');
+    return row;
+  }
 }
 
 export const escrowFiduciary = new EscrowFiduciaryAgent();
