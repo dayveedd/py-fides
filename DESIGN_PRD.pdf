@@ -1,0 +1,504 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> /F3 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >> /F4 << /Type /Font /Subtype /Type1 /BaseFont /Courier >> /F5 << /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold >> >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 10401 >>
+stream
+0.040 0.080 0.180 rg
+46.00 602.00 520.00 138.00 re f
+0.000 0.440 0.730 rg
+46.00 736.00 520.00 4.00 re f
+1.000 1.000 1.000 rg
+BT /F2 21.0 Tf 62.00 710.00 Td (pyFides Design PRD) Tj ET
+0.600 0.820 1.000 rg
+BT /F1 9.5 Tf 62.00 694.00 Td (Brand Identity, Visual Tokens & Dual-Console UI/UX Specification for Lead Designer) Tj ET
+0.080 0.140 0.280 rg
+0.150 0.250 0.450 RG
+0.75 w
+62.00 614.00 488.00 64.00 re B
+0.920 0.960 1.000 rg
+BT /F2 7.8 Tf 70.00 663.00 Td (Document Class: Premium UI/UX & Brand Design Specification \(Figma / Design System\)) Tj ET
+0.800 0.880 0.980 rg
+BT /F1 7.8 Tf 70.00 649.00 Td (Aesthetic Reference: Apple Design \(Emil Kowalski WWDC principles\), Stripe Press, Linear, SpaciaOS) Tj ET
+0.800 0.880 0.980 rg
+BT /F1 7.8 Tf 70.00 635.00 Td (Architecture: Dual-Console Interface \(Marketplace & Copilot <---> Treasury & Risk Ledger\)) Tj ET
+0.920 0.960 1.000 rg
+BT /F2 7.8 Tf 70.00 621.00 Td (Objective: Deliver a high-prestige, tactile, Apple-caliber financial protocol design.) Tj ET
+0.000 0.440 0.730 rg
+46.00 573.00 4.00 15.00 re f
+0.040 0.080 0.180 rg
+BT /F2 11.5 Tf 56.00 576.00 Td (1. Design Vision, Archetype & Emotional Thesis) Tj ET
+0.820 0.870 0.940 RG
+0.75 w
+46.00 570.00 m 566.00 570.00 l S
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 551.50 Td (The high-concept design elevator pitch: 'Imagine if Apple Wallet, Bloomberg Terminal, and Stripe were reimagined in 2026 as an) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 539.70 Td (autonomous fiduciary protocol for AI agents.') Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 523.90 Td (As the global digital economy transitions to machine-to-machine \(A2A\) commerce, autonomous AI agents purchase compute cycles,) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 512.10 Td (proprietary datasets, and automated services from other machines. pyFides is the zero-trust settlement and escrow layer backed by) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 500.30 Td (Google's Agent Payments Protocol \(AP2\), PayPal Orders v2, and PYUSD stablecoins.) Tj ET
+0.000 0.440 0.730 rg
+48.00 486.50 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 484.50 Td (Strictly Reject AI Hacker ClichÈs: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 196.05 484.50 Td (No pitch-black cyberpunk matrix screens, glowing neon border lines, or noisy terminal dumps.) Tj ET
+0.000 0.440 0.730 rg
+48.00 470.70 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 468.70 Td (The Persona Archetype: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 160.14 468.70 Td (Savile Row meets Silicon Valley. Calm, authoritative, mathematical, tactile, and uncompromisingly lucid.) Tj ET
+0.000 0.440 0.730 rg
+48.00 454.90 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 452.90 Td (Emotional Objective: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 146.91 452.90 Td (The user must experience immediate financial trust, cryptographic finality, and physical tactile joy.) Tj ET
+0.000 0.440 0.730 rg
+46.00 432.60 4.00 15.00 re f
+0.040 0.080 0.180 rg
+BT /F2 11.5 Tf 56.00 435.60 Td (2. Visual Tokens & Design System Foundation) Tj ET
+0.820 0.870 0.940 RG
+0.75 w
+46.00 429.60 m 566.00 429.60 l S
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 411.10 Td (The brand designer must establish a tokenized Figma library with strict attention to optical sizing and materials:) Tj ET
+0.040 0.120 0.300 rg
+46.00 385.80 110.00 18.00 re f
+1.000 1.000 1.000 rg
+BT /F2 7.5 Tf 52.00 391.80 Td (Design Token) Tj ET
+0.080 0.180 0.400 rg
+156.00 385.80 110.00 18.00 re f
+1.000 1.000 1.000 rg
+BT /F2 7.5 Tf 162.00 391.80 Td (HEX Code) Tj ET
+0.080 0.180 0.400 rg
+266.00 385.80 300.00 18.00 re f
+1.000 1.000 1.000 rg
+BT /F2 7.5 Tf 272.00 391.80 Td (Semantic Purpose & Material Behavior) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 367.30 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 375.80 Td (Warm Stone Canvas) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 367.30 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 375.80 Td (#FAFAF9) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 367.30 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 375.80 Td (Light mode foundation. Organic, warm, tactile paper feel.) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 348.80 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 357.30 Td (Elevated Card White) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 348.80 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 357.30 Td (#FFFFFF) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 348.80 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 357.30 Td (Primary elevated container surface with soft inner rim highlight.) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 330.30 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 338.80 Td (Subtle Stone Border) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 330.30 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 338.80 Td (#E7E5E4) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 330.30 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 338.80 Td (1px hairline separation \(stone-200\). Never heavy or dark.) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 311.80 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 320.30 Td (Obsidian Charcoal) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 311.80 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 320.30 Td (#0C0A09) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 311.80 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 320.30 Td (Primary typography & high-contrast inverted call-to-actions.) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 293.30 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 301.80 Td (PayPal Royal Navy) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 293.30 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 301.80 Td (#001C64) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 293.30 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 301.80 Td (Institutional brand anchor. Editorial headlines & brand seals.) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 274.80 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 283.30 Td (PayPal Electric Blue) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 274.80 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 283.30 Td (#0070BA) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 274.80 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 283.30 Td (Interactive triggers, focus states, and primary button fills.) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 256.30 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 264.80 Td (Settled Emerald) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 256.30 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 264.80 Td (#059669 / #ECFDF5) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 256.30 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 264.80 Td (Cryptographically verified escrow & settled transaction pill.) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 237.80 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 246.30 Td (Pending Escrow Amber) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 237.80 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 246.30 Td (#D97706 / #FFFBEB) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 237.80 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 246.30 Td (Funds locked in PayPal Orders v2 AUTHORIZE pending hold.) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 219.30 110.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 227.80 Td (Quarantine Rose) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+156.00 219.30 110.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 162.00 227.80 Td (#DC2626 / #FEF2F2) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+266.00 219.30 300.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 272.00 227.80 Td (OWASP MCP prompt injection blocked / adversarial alert.) Tj ET
+0.060 0.220 0.500 rg
+BT /F2 9.8 Tf 46.00 205.30 Td (2.1 Typography Hierarchy & Optical Sizing Rules) Tj ET
+0.000 0.440 0.730 rg
+48.00 190.80 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 188.80 Td (Display Headlines \(Editorial\): ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 179.98 188.80 Td (Instrument Serif / Newsreader with tight tracking \(-0.035em\). Large, poetic, and confident.) Tj ET
+0.000 0.440 0.730 rg
+48.00 175.00 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 173.00 Td (Primary Interface: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 134.64 173.00 Td (SF Pro Display / Inter with medium tracking \(-0.02em\). Section titles, cards, and buttons.) Tj ET
+0.000 0.440 0.730 rg
+48.00 159.20 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 157.20 Td (Body & Captions: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 133.67 157.20 Td (SF Pro Text / Inter with standard leading and regular weight \(400\).) Tj ET
+0.000 0.440 0.730 rg
+48.00 143.40 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 141.40 Td (Monospace Strict Scope: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 163.91 141.40 Td (JetBrains Mono / SF Mono with tabular-nums. STRICTLY reserved for hashes, IDs, monetary sums, and) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 60.00 129.60 Td (code blocks. Never for body text!) Tj ET
+0.000 0.440 0.730 rg
+46.00 109.30 4.00 15.00 re f
+0.040 0.080 0.180 rg
+BT /F2 11.5 Tf 56.00 112.30 Td (3. Information Architecture: The Dual-Console Paradigm) Tj ET
+0.820 0.870 0.940 RG
+0.75 w
+46.00 106.30 m 566.00 106.30 l S
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 87.80 Td (To eliminate clutter, the entire product is organized into two dedicated experiences connected by an Apple-style floating segmented) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 76.00 Td (controller at the top:) Tj ET
+0.800 0.850 0.900 RG
+0.75 w
+46.00 42.00 m 566.00 42.00 l S
+0.400 0.450 0.550 rg
+BT /F1 7.5 Tf 46.00 30.00 Td (Brand Identity, Visual Tokens & UI/UX Experience Specification | Apple-Grade Standard) Tj ET
+0.400 0.450 0.550 rg
+BT /F2 7.8 Tf 521.00 30.00 Td (Page 1 of 2) Tj ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> /F3 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >> /F4 << /Type /Font /Subtype /Type1 /BaseFont /Courier >> /F5 << /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 7956 >>
+stream
+0.000 0.150 0.400 rg
+BT /F2 8.0 Tf 46.00 758.00 Td (pyFides --- Product Design Requirements Document \(Design PRD\)) Tj ET
+0.400 0.480 0.600 rg
+BT /F1 7.8 Tf 436.00 758.00 Td (Brand & UI Design Specification) Tj ET
+0.820 0.860 0.920 RG
+0.75 w
+46.00 748.00 m 566.00 748.00 l S
+0.000 0.440 0.730 rg
+48.00 723.50 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 721.50 Td (View 1 \(Operational Commerce\): ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 193.20 721.50 Td (The Autonomous Marketplace & Action-Oriented Copilot. Where users and agents buy and) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 60.00 709.70 Td (negotiate.) Tj ET
+0.000 0.440 0.730 rg
+48.00 695.90 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 693.90 Td (View 2 \(Financial Command Center\): ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 209.73 693.90 Td (Executive Treasury & Risk Analytics \(AG Charts\) + Live A2A Settlement Ledger \(AG Grid\).) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 60.00 682.10 Td (Where CFOs monitor liquidity and fraud.) Tj ET
+0.000 0.440 0.730 rg
+46.00 661.80 4.00 15.00 re f
+0.040 0.080 0.180 rg
+BT /F2 11.5 Tf 56.00 664.80 Td (4. Detailed Screen Specifications) Tj ET
+0.820 0.870 0.940 RG
+0.75 w
+46.00 658.80 m 566.00 658.80 l S
+0.060 0.220 0.500 rg
+BT /F2 9.8 Tf 46.00 640.80 Td (Screen 1: The High-Prestige Editorial Landing Page) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 624.30 Td (Editorial hero with poetic serif headline, architectural bento grid, and a live protocol comparison matrix comparing Google AP2 \(pyFides\)) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 612.50 Td (vs. Stripe ACP vs. Coinbase x402. Zero leaked secrets or BN partner codes!) Tj ET
+0.060 0.220 0.500 rg
+BT /F2 9.8 Tf 46.00 597.20 Td (Screen 2: View 1 --- The Autonomous Marketplace & Interactive Copilot) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 580.70 Td (Split-stage layout \(60% Store / 40% Copilot\):) Tj ET
+0.000 0.440 0.730 rg
+48.00 566.90 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 564.90 Td (Marketplace Cards: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 140.78 564.90 Td (Displays real procurable assets: NVIDIA H100 GPU Burst \($28.00\), Q4 Financial Dataset \($25.00\), and AP2) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 60.00 553.10 Td (Gateway \($15.00\) with 'Procure via Agent Escrow' buttons.) Tj ET
+0.000 0.440 0.730 rg
+48.00 539.30 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 537.30 Td (The Copilot Thread: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 142.65 537.30 Td (NOT a plain text chat! Renders interactive tactile cards at each stage: \(1\) Intent Mandate spend cap \($30 max\),) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 60.00 525.50 Td (\(2\) A2A dialogue, \(3\) Live PayPal Escrow Hold \(AUTHORIZE\), \(4\) SHA-256 Oracle match, and \(5\) Confirmed PayPal Receipt.) Tj ET
+0.060 0.220 0.500 rg
+BT /F2 9.8 Tf 46.00 510.20 Td (Screen 3: View 2 --- Treasury Analytics \(AG Charts\) & Settlement Ledger \(AG Grid\)) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 493.70 Td (Back-of-house financial command center for CFOs and Risk Officers:) Tj ET
+0.000 0.440 0.730 rg
+48.00 479.90 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 477.90 Td (Executive KPI Cards: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 147.86 477.90 Td (Total Volume Settled, Active Capital Protected, Quarantined Threats, Zero-Loss Rate.) Tj ET
+0.000 0.440 0.730 rg
+48.00 464.10 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 462.10 Td (AG Charts Enterprise: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 151.63 462.10 Td (Volume & Settlement Flow Area Chart, Threat & Resolution Donut Chart, Escrow Turnaround Bar Chart.) Tj ET
+0.000 0.440 0.730 rg
+48.00 448.30 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 446.30 Td (Full-Width AG Grid: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 141.69 446.30 Td (Quartz theme with custom cell renderers, sorting, and master-detail row expansion showing canonical AP2) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 60.00 434.50 Td (JSON.) Tj ET
+0.060 0.220 0.500 rg
+BT /F2 9.8 Tf 46.00 419.20 Td (Screen 4: Verifiable AP2 Cryptographic Certificate Sheet) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 402.70 Td (Apple Pay / Airline Pass style modal showing Ed25519 principal signature verification, SHA-256 deliverable match, PayPal Capture ID,) Tj ET
+0.160 0.190 0.240 rg
+BT /F1 8.5 Tf 46.00 390.90 Td (and 1-click JSON/PDF download.) Tj ET
+0.000 0.440 0.730 rg
+46.00 370.60 4.00 15.00 re f
+0.040 0.080 0.180 rg
+BT /F2 11.5 Tf 56.00 373.60 Td (5. Motion Design, Spring Physics & States Matrix) Tj ET
+0.820 0.870 0.940 RG
+0.75 w
+46.00 367.60 m 566.00 367.60 l S
+0.000 0.440 0.730 rg
+48.00 351.10 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 349.10 Td (Zero-Latency Press States: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 171.95 349.10 Td (All clickable elements must respond on pointer-down with scale\(0.98\) and 80ms transitions.) Tj ET
+0.000 0.440 0.730 rg
+48.00 335.30 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 333.30 Td (Physical Springs: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 133.69 333.30 Td (Critically damped spring motion \(damping 1.0, response 0.35s\) for segmented tabs and modal sheets.) Tj ET
+0.000 0.440 0.730 rg
+48.00 319.50 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 317.50 Td (Status Morphing: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 132.25 317.50 Td (Escrow state changes from Amber \(Held\) to Green \(Settled\) smoothly cross-fade without layout snaps.) Tj ET
+0.000 0.440 0.730 rg
+48.00 303.70 4.00 4.00 re f
+0.050 0.120 0.250 rg
+BT /F2 8.5 Tf 60.00 301.70 Td (Adversarial Attack Reaction: ) Tj ET
+0.200 0.240 0.300 rg
+BT /F1 8.5 Tf 178.09 301.70 Td (Quarantined prompt injections trigger a subtle horizontal shake \(+/-4px\) with soft crimson alert badge.) Tj ET
+0.040 0.120 0.300 rg
+46.00 276.40 140.00 18.00 re f
+1.000 1.000 1.000 rg
+BT /F2 7.5 Tf 52.00 282.40 Td (Design Deliverable) Tj ET
+0.080 0.180 0.400 rg
+186.00 276.40 380.00 18.00 re f
+1.000 1.000 1.000 rg
+BT /F2 7.5 Tf 192.00 282.40 Td (Figma Handoff Acceptance Criteria) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 257.90 140.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 266.40 Td (Design Tokens & Styles) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+186.00 257.90 380.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 192.00 266.40 Td (Light and Dark mode color palettes, typography scales, inner rim highlights, and elevation shadows.) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 239.40 140.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 247.90 Td (Component Library) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+186.00 239.40 380.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 192.00 247.90 Td (Auto-Layout 5.0 components for Nav, Cards, Copilot Steps, AG Charts containers, and Grid cells.) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 220.90 140.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 229.40 Td (High-Fidelity Screens) Tj ET
+0.950 0.970 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+186.00 220.90 380.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 192.00 229.40 Td (1440px Desktop & 390px Mobile mockups for Landing, Marketplace, Copilot, Treasury, and Certificate Modal.) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+46.00 202.40 140.00 18.50 re B
+0.050 0.150 0.350 rg
+BT /F2 7.4 Tf 52.00 210.90 Td (Interactive Prototype) Tj ET
+1.000 1.000 1.000 rg
+0.860 0.900 0.960 RG
+0.50 w
+186.00 202.40 380.00 18.50 re B
+0.180 0.220 0.280 rg
+BT /F1 7.4 Tf 192.00 210.90 Td (Figma prototype showing end-to-end procurement, chat thread transitions, and view switching.) Tj ET
+0.800 0.850 0.900 RG
+0.75 w
+46.00 42.00 m 566.00 42.00 l S
+0.400 0.450 0.550 rg
+BT /F1 7.5 Tf 46.00 30.00 Td (Brand Identity, Visual Tokens & UI/UX Experience Specification | Apple-Grade Standard) Tj ET
+0.400 0.450 0.550 rg
+BT /F2 7.8 Tf 521.00 30.00 Td (Page 2 of 2) Tj ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000552 00000 n 
+0000011006 00000 n 
+0000011431 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+19439
+%%EOF

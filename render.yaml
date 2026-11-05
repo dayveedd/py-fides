@@ -39,3 +39,4 @@ services:
         value: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
       - key: QWEN_API_KEY
         sync: false
+ 
